@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cenka\\source\\repos\\LIB\\Infrastructure\\Infrastructure.csproj",
-      "projectName": "Infrastructure",
-      "projectPath": "C:\\Users\\cenka\\source\\repos\\LIB\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\cenka\\source\\repos\\LIB\\Infrastructure\\LIB.Infrastructure.csproj",
+      "projectName": "LIB.Infrastructure",
+      "projectPath": "C:\\Users\\cenka\\source\\repos\\LIB\\Infrastructure\\LIB.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\cenka\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\cenka\\source\\repos\\LIB\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",

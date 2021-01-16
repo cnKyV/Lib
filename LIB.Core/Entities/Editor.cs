@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
 namespace LIB.Core.Entities
 {
-    public class Publisher
+    public class Editor
     {
-        public int PublisherId { get; set; }
+        public int EditorId { get; set; }
         public string Name { get; set; }
+        public string Surname { get; set; }
         public string About { get; set; }
-        public ICollection<Editor> Editors { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public ICollection<Book> Books { get; set; }
+        public ICollection<Publisher> Publishers { get; set; }
         public Contact Address { get; set; }
     }
 }

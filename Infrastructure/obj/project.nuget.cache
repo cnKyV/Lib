@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GDsyDPAmleBtiU5nFBCQjqhtvajxg1FEgZHLbnUwJJpr27x9jvbBgPY6fdG9vDdVLTdDaKl6cIFtwPzHj9UUEw==",
+  "dgSpecHash": "K7t3h5epLR6DkkaGVQCKlJ5vHTAe3VVMLRHprm7klvyG62pP/MKar+LSz1ZlFUuyV8mB3qZWXiq9gOTDJ9btPg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\cenka\\source\\repos\\LIB\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\cenka\\source\\repos\\LIB\\Infrastructure\\LIB.Infrastructure.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
