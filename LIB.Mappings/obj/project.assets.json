@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cenka\\source\\repos\\LIB\\LIB.API\\LIB.API.csproj",
-      "projectName": "LIB.API",
-      "projectPath": "C:\\Users\\cenka\\source\\repos\\LIB\\LIB.API\\LIB.API.csproj",
+      "projectUniqueName": "C:\\Users\\cenka\\source\\repos\\LIB\\LIB.Mappings\\LIB.Mapping.csproj",
+      "projectName": "LIB.Mapping",
+      "projectPath": "C:\\Users\\cenka\\source\\repos\\LIB\\LIB.Mappings\\LIB.Mapping.csproj",
       "packagesPath": "C:\\Users\\cenka\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cenka\\source\\repos\\LIB\\LIB.API\\obj\\",
+      "outputPath": "C:\\Users\\cenka\\source\\repos\\LIB\\LIB.Mappings\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\cenka\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -56,9 +56,6 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
