@@ -7,11 +7,11 @@ namespace LIB.Core.Entities
 {
     public class Publisher
     {
-        public int PublisherId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string About { get; set; }
         public ICollection<Editor> Editors { get; set; }
         public ICollection<Book> Books { get; set; }
-        public Contact Address { get; set; }
+        public Contact Contact { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace LIB.Core.Entities
 {
     public class Book
     {
-        public int BookId { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }
