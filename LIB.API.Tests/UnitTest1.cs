@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace LIB.API.Tests
+namespace LIB.Core.Tests
 {
     public class UnitTest1
     {
