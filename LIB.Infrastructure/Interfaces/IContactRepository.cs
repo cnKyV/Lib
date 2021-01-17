@@ -13,5 +13,6 @@ namespace LIB.Infrastructure.Interfaces
         Contact Update(Contact contact);
         bool Clear();
         bool DeleteById(int id);
+        void SaveChanges();
     }
 }

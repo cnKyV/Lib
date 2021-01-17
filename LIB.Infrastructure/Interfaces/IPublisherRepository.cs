@@ -13,5 +13,6 @@ namespace LIB.Infrastructure.Interfaces
         Publisher Update(Publisher publisher);
         bool Clear();
         bool DeleteById(int id);
+        void SaveChanges();
     }
 }

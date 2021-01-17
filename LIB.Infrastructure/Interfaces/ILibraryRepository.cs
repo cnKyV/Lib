@@ -13,6 +13,6 @@ namespace LIB.Infrastructure.Interfaces
         Library Update(Library library);
         bool Clear();
         bool DeleteById(int id);
-
+        void SaveChanges();
     }
 }

@@ -13,5 +13,6 @@ namespace LIB.Infrastructure.Interfaces
         Author Update(Author author);
         bool Clear();
         bool DeleteById(int id);
+        void SaveChanges();
     }
 }
