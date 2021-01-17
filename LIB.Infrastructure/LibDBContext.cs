@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace LIB.Infrastructure
@@ -12,11 +13,32 @@ namespace LIB.Infrastructure
         {
 
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Book>().Property<DateTime>("DateCreated");
-            modelBuilder.Entity<Book>().Property<DateTime>("DateUpdated");
+            var allEntities = modelBuilder.Model.GetEntityTypes();
+            foreach (var entity in allEntities)
+            {
+                entity.AddProperty("DateCreated", typeof(DateTime));
+                entity.AddProperty("DateUpdated", typeof(DateTime));
+            }
+
+        }
+        public override int SaveChanges()
+        {
+            var entries = ChangeTracker
+                .Entries()
+                .Where(e => e.State == EntityState.Added
+                || e.State == EntityState.Modified);
+            foreach (var entityEntry in entries)
+            {
+                entityEntry.Property("DateUpdated").CurrentValue = DateTime.Now;
+                if (entityEntry.State == EntityState.Added)
+                {
+                    entityEntry.Property("DateCreated").CurrentValue = DateTime.Now;
+                }
+            }
+
+            return base.SaveChanges();
         }
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors{ get; set; }

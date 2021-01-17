@@ -1,3 +1,4 @@
+using LIB.Core.Entities;
 using LIB.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,11 +27,13 @@ namespace LIB.Core
         {
             services.AddDbContext<LibDBContext>
        (options => options.UseSqlServer(Configuration.GetConnectionString("LibDb")));
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
