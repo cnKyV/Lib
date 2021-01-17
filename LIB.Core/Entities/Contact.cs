@@ -6,6 +6,7 @@ namespace LIB.Core.Entities
 {
     public class Contact
     {
+        public int Id { get; set; }
         public string Email { get; set; }
         public string Website { get; set; }
         public string Number1 { get; set; }

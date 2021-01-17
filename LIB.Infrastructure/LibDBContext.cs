@@ -12,6 +12,12 @@ namespace LIB.Infrastructure
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Book>().Property<DateTime>("DateCreated");
+            modelBuilder.Entity<Book>().Property<DateTime>("DateUpdated");
+        }
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors{ get; set; }
         public DbSet<Editor> Editors{ get; set; }
