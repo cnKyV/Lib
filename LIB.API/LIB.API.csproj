@@ -1,12 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>2d5ec81f09c1d766c8339f00daa1711d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Logs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
   </ItemGroup>
 
 </Project>
