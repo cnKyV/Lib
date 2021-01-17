@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    interface IEditorRepository
+    public interface IEditorRepository
     {
         ICollection<Editor> GetAll();
         Editor GetById(int id);

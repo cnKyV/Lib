@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    interface IPublisherRepository
+   public interface IPublisherRepository
     {
         ICollection<Publisher> GetAll();
         Publisher GetById(int id);

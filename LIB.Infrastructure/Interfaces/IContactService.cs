@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    interface IContactService
+    public interface IContactService
     {
         ICollection<Contact> GetAll();
         Contact GetById(int id);

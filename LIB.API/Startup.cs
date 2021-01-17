@@ -1,5 +1,8 @@
+using AutoMapper;
 using LIB.Core.Entities;
 using LIB.Infrastructure;
+using LIB.Infrastructure.Interfaces;
+using LIB.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -20,14 +23,23 @@ namespace LIB.Core
         {
             Configuration = configuration;
         }
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; } 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<LibDBContext>
        (options => options.UseSqlServer(Configuration.GetConnectionString("LibDb")));
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IContactRepository, ContactRepository>();
+            services.AddScoped<IEditorRepository, EditorRepository>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
+            services.AddScoped<ILibraryRepository, LibraryRepository>();
+            services.AddScoped<IPublisherRepository, PublisherRepository>();
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    interface IGenreRepository
+    public interface IGenreRepository
     {
         ICollection<Genre> GetAll();
         Genre GetById(int id);
