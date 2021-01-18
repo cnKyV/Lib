@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIB.Infrastructure", "LIB.I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIB.Mapping", "LIB.Mappings\LIB.Mapping.csproj", "{3F51B844-DF7E-4AD6-B74F-FFE8AD567CBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIB.Domain", "LIB.Domain\LIB.Domain.csproj", "{A09A046A-FE09-492D-926F-09454936253C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIB.Domain", "LIB.Domain\LIB.Domain.csproj", "{A09A046A-FE09-492D-926F-09454936253C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIB.Infrastructure.Tests", "LIB.Infrastructure.Tests\LIB.Infrastructure.Tests.csproj", "{5C67FDF5-405A-42DE-86F2-CDB6E4E96C12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{A09A046A-FE09-492D-926F-09454936253C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A09A046A-FE09-492D-926F-09454936253C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A09A046A-FE09-492D-926F-09454936253C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C67FDF5-405A-42DE-86F2-CDB6E4E96C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C67FDF5-405A-42DE-86F2-CDB6E4E96C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C67FDF5-405A-42DE-86F2-CDB6E4E96C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C67FDF5-405A-42DE-86F2-CDB6E4E96C12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
