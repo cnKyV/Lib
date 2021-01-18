@@ -24,5 +24,15 @@ namespace LIB.API.Controllers
         {
             return Ok(_authorRepository.Create(author));
         }
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok(_authorRepository.GetAll());
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            return Ok(_authorRepository.GetById(id));
+        }
     }
 }
