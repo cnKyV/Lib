@@ -34,5 +34,21 @@ namespace LIB.API.Controllers
         {
             return Ok(_authorRepository.GetById(id));
         }
+        [HttpPatch]
+        public IActionResult Update(Author author)
+        {
+            return Ok(_authorRepository.Update(author));
+        }
+        [HttpDelete]
+        public IActionResult Clear()
+        {
+            return Ok(_authorRepository.Clear());
+        }
+        [HttpDelete("{id}")]
+        public IActionResult DeleteById(int id)
+        {
+            return Ok(_authorRepository.DeleteById(id));
+        }
+
     }
 }

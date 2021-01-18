@@ -5,13 +5,8 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    public interface IAuthorService
+    public interface IAuthorService : IGeneralRepository<Author>
     {
-        ICollection<Author> GetAll();
-        Author GetById(int id);
-        Author Create(Author author);
-        Author Update(Author author);
-        bool Clear();
-        bool DeleteById(int id);
+
     }
 }
