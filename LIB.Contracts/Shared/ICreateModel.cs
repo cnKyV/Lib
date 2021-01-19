@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LIB.Contracts.Shared
 {
-    interface ICreateModel
+    public interface ICreateModel
     {
     }
 }

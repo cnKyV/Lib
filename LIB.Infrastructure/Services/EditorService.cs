@@ -1,5 +1,8 @@
-﻿using LIB.Core.Entities;
+﻿using LIB.Contracts.ResponseModel;
+using LIB.Contracts.Shared;
+using LIB.Core.Entities;
 using LIB.Infrastructure.Interfaces;
+using LIB.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,32 +11,22 @@ namespace LIB.Infrastructure.Services
 {
     public class EditorService : IEditorService
     {
-        public bool Clear()
+        public ICreateModel Create(EditorRepository Repository)
         {
             throw new NotImplementedException();
         }
 
-        public Editor Create(Editor editor)
+        public ICollection<EditorViewModel> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteById(int id)
+        public EditorViewModel GetById(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<Editor> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Editor GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Editor Update(Editor editor)
+        public IUpdateModel Update(EditorRepository Repository)
         {
             throw new NotImplementedException();
         }

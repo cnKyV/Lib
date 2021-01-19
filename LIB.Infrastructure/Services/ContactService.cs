@@ -1,5 +1,8 @@
-﻿using LIB.Core.Entities;
+﻿using LIB.Contracts.ResponseModel;
+using LIB.Contracts.Shared;
+using LIB.Core.Entities;
 using LIB.Infrastructure.Interfaces;
+using LIB.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,32 +11,22 @@ namespace LIB.Infrastructure.Services
 {
     public class ContactService : IContactService
     {
-        public bool Clear()
+        public ICreateModel Create(ContactRepository Repository)
         {
             throw new NotImplementedException();
         }
 
-        public Contact Create(Contact contact)
+        public ICollection<ContactViewModel> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteById(int id)
+        public ContactViewModel GetById(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<Contact> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Contact GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Contact Update(Contact contact)
+        public IUpdateModel Update(ContactRepository Repository)
         {
             throw new NotImplementedException();
         }

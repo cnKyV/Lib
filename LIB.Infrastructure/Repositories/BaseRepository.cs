@@ -46,7 +46,7 @@ namespace LIB.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        protected virtual T Update(T TEntity)
+        public virtual T Update(T TEntity)
         {
             throw new NotImplementedException();
         }

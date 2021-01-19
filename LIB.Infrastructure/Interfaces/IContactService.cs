@@ -1,4 +1,5 @@
 ﻿using LIB.Contracts.ResponseModel;
+using LIB.Contracts.Shared;
 using LIB.Core.Entities;
 using LIB.Infrastructure.Repositories;
 using System;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    public interface IContactService : IService<ContactRepository,ContactCreateResponseModel>
+    public interface IContactService : IService<ContactRepository,ContactViewModel,ICreateModel,IUpdateModel>
     {
 
     }

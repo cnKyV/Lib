@@ -1,10 +1,11 @@
-﻿using System;
+﻿using LIB.Contracts.Shared;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace LIB.Contracts.RequestModel
 {
-    class PublisherCreateRequestModel
+    public class PublisherCreateRequestModel : ICreateModel
     {
     }
 }

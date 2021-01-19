@@ -13,41 +13,41 @@ namespace LIB.API.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
-        private readonly IAuthorRepository _authorRepository;
-        public AuthorController(IAuthorRepository authorRepository)
+        
+        public AuthorController()
         {
-            _authorRepository = authorRepository;
+            
         }
 
         [HttpPost]
        public IActionResult Create(Author author)
         {
-            return Ok(_authorRepository.Create(author));
+            return Ok();
         }
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_authorRepository.GetAll());
+            return Ok();
         }
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok(_authorRepository.GetById(id));
+            return Ok();
         }
         [HttpPatch]
         public IActionResult Update(Author author)
         {
-            return Ok(_authorRepository.Update(author));
+            return Ok();
         }
         [HttpDelete]
         public IActionResult Clear()
         {
-            return Ok(_authorRepository.Clear());
+            return Ok();
         }
         [HttpDelete("{id}")]
         public IActionResult DeleteById(int id)
         {
-            return Ok(_authorRepository.DeleteById(id));
+            return Ok();
         }
 
     }

@@ -5,7 +5,6 @@ namespace LIB.Infrastructure.Interfaces
 {
    public interface IService<T,Tview,Tcreate,Tupdate> where Tcreate : ICreateModel 
                                                       where Tupdate : IUpdateModel
-                                                      where T : IRepository<object>
     {
         ICollection<Tview> GetAll();
         Tview GetById(int Id);

@@ -1,5 +1,8 @@
-﻿using LIB.Core.Entities;
+﻿using LIB.Contracts.ResponseModel;
+using LIB.Contracts.Shared;
+using LIB.Core.Entities;
 using LIB.Infrastructure.Interfaces;
+using LIB.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,32 +11,22 @@ namespace LIB.Infrastructure.Services
 {
     public class GenreService : IGenreService
     {
-        public bool Clear()
+        public ICreateModel Create(GenreRepository Repository)
         {
             throw new NotImplementedException();
         }
 
-        public Genre Create(Genre genre)
+        public ICollection<GenreViewModel> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteById(int id)
+        public GenreViewModel GetById(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<Genre> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Genre GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Genre Update(Genre genre)
+        public IUpdateModel Update(GenreRepository Repository)
         {
             throw new NotImplementedException();
         }
