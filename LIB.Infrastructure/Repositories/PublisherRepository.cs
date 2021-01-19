@@ -7,11 +7,36 @@ using System.Text;
 
 namespace LIB.Infrastructure.Repositories
 {
-    public class PublisherRepository : BaseRepository<Publisher>
+    public class PublisherRepository : IRepository<Publisher>
     {
-        public PublisherRepository(ILogger<Publisher> logger, LibDBContext libDBContext) : base(logger, libDBContext)
+        public bool Clear()
         {
+            throw new NotImplementedException();
+        }
 
+        public Publisher Create(Publisher TEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<Publisher> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Publisher GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Publisher Update(Publisher TEntity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

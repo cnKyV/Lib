@@ -12,23 +12,23 @@ namespace LIB.Infrastructure.Repositories
 {
     public class AuthorRepository : IRepository<Author>
     {
-        private readonly LibDBContext _libDBContext;
+        private readonly LibDBContext _libDbContext;
         private readonly ILogger<AuthorRepository> _logger;
-        public AuthorRepository(LibDBContext libDBContext, ILogger<AuthorRepository> logger)
+        public AuthorRepository(LibDBContext libDbContext, ILogger<AuthorRepository> logger)
         {
-            _libDBContext = libDBContext;
+            _libDbContext = libDbContext;
             _logger = logger;
         }
         public bool Clear()
         {
             try
             {
-                _libDBContext.Authors.RemoveRange(_libDBContext.Authors);
-                _libDBContext.SaveChanges();
+                _libDbContext.Authors.RemoveRange(_libDbContext.Authors);
+                _libDbContext.SaveChanges();
             }
             catch (Exception ex)
             {
-               
+
                 _logger.LogError(ex, ex.Message);
                 return false;
             }
@@ -40,8 +40,8 @@ namespace LIB.Infrastructure.Repositories
         {
             try
             {
-                _libDBContext.Authors.Add(author);
-                _libDBContext.SaveChanges();
+                _libDbContext.Authors.Add(author);
+                _libDbContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -54,18 +54,18 @@ namespace LIB.Infrastructure.Repositories
 
         public bool DeleteById(int id)
         {
-            var author = _libDBContext.Authors.FirstOrDefault(i => i.Id == id);
+            var author = _libDbContext.Authors.FirstOrDefault(i => i.Id == id);
             try
             {
-                _libDBContext.Authors.Remove(author);
-                _libDBContext.SaveChanges();
+                _libDbContext.Authors.Remove(author);
+                _libDbContext.SaveChanges();
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
                 return false;
             }
-            _logger.LogInformation($"Author with ID: {author.Id} has been succesfully removed.");
+            _logger.LogInformation($"Author with ID: {id} has been succesfully removed.");
             return true;
         }
 
@@ -73,7 +73,7 @@ namespace LIB.Infrastructure.Repositories
         {
             try
             {
-                return _libDBContext.Authors.ToArray();
+                return _libDbContext.Authors.ToArray();
             }
             catch (Exception ex)
             {
@@ -87,7 +87,7 @@ namespace LIB.Infrastructure.Repositories
         {
             try
             {
-                return _libDBContext.Authors.FirstOrDefault(i => i.Id == id);
+                return _libDbContext.Authors.FirstOrDefault(i => i.Id == id);
             }
             catch (Exception ex)
             {
@@ -101,7 +101,7 @@ namespace LIB.Infrastructure.Repositories
         {
             try
             {
-                _libDBContext.SaveChanges();
+                _libDbContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -112,7 +112,7 @@ namespace LIB.Infrastructure.Repositories
 
         public Author Update(Author author)
         {
-            var _author = _libDBContext.Authors.FirstOrDefault(i => i.Id == author.Id);
+            var _author = _libDbContext.Authors.FirstOrDefault(i => i.Id == author.Id);
             try
             {
                 _author.Name = author.Name;
@@ -120,7 +120,7 @@ namespace LIB.Infrastructure.Repositories
                 _author.About = author.About;
                 _author.DateOfBirth = author.DateOfBirth;
                 _author.Books = author.Books;
-                _libDBContext.SaveChanges();     
+                _libDbContext.SaveChanges();     
             }
             catch (Exception ex)
             {

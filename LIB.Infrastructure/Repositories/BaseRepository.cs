@@ -3,10 +3,11 @@ using LIB.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace LIB.Infrastructure.Repositories
 {
-    public class BaseRepository<T> : IRepository<T>
+    public class BaseRepository<T>
     {
         ILogger<T> _logger;
         LibDBContext _libDbContext;
@@ -15,40 +16,6 @@ namespace LIB.Infrastructure.Repositories
             _logger = logger;
             _libDbContext = libDBContext;
  
-        }
-        public bool Clear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public T Create(T TEntity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool DeleteById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICollection<T> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public T GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual T Update(T TEntity)
-        {
-            throw new NotImplementedException();
         }
     }
 }

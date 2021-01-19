@@ -11,8 +11,8 @@ namespace LIB.Core.Entities
         public string Surname { get; set; }
         public string About { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public ICollection<Book> Books { get; set; }
-        public ICollection<Publisher> Publishers { get; set; }
+        public ICollection<BookEditor> Books { get; set; }
+        public ICollection<EditorPublisher> Publishers { get; set; }
         public Contact Address { get; set; }
     }
 }

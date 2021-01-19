@@ -4,10 +4,10 @@ using System.Text;
 
 namespace LIB.Core.Entities
 {
-    public class EditorPublisher
+    public class BookPublisher
     {
-        public int EditorId { get; set; }
-        public Editor Editor { get; set; }
+        public int BookId { get; set; }
+        public Book Book { get; set; }
         public int PublisherId { get; set; }
         public Publisher Publisher { get; set; }
     }

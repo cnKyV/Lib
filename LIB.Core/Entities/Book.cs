@@ -15,10 +15,10 @@ namespace LIB.Core.Entities
         public int Pages { get; set; }
         public string PdfSource { get; set; }
         public string Edition { get; set; }
-        public ICollection<Author> Authors { get; set; }
-        public ICollection<Editor> Editors { get; set; }
-        public Publisher Publishers { get; set; }
-        public ICollection<Genre> Genres { get; set; }
-        public ICollection<Library> Libraries { get; set; }
+        public ICollection<AuthorBook> Authors { get; set; }
+        public ICollection<BookEditor> Editors { get; set; }
+        public ICollection<BookPublisher> Publishers { get; set; }
+        public ICollection<BookGenre> Genres { get; set; }
+        public ICollection<BookLibrary> Libraries { get; set; }
     }
 }

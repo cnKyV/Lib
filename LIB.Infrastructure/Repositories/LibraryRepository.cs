@@ -7,11 +7,36 @@ using System.Text;
 
 namespace LIB.Infrastructure.Repositories
 {
-    public class LibraryRepository : BaseRepository<Library>
+    public class LibraryRepository : IRepository<Library>
     {
-        public LibraryRepository(ILogger<Library> logger, LibDBContext libDBContext) : base(logger, libDBContext)
+        public bool Clear()
         {
+            throw new NotImplementedException();
+        }
 
+        public Library Create(Library TEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<Library> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Library GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Library Update(Library TEntity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

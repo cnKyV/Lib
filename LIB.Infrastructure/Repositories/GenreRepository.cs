@@ -7,11 +7,36 @@ using System.Text;
 
 namespace LIB.Infrastructure.Repositories
 {
-    public class GenreRepository : BaseRepository<Genre>
+    public class GenreRepository : IRepository<Genre>
     {
-        public GenreRepository(ILogger<Genre> logger, LibDBContext libDBContext) : base(logger, libDBContext)
+        public bool Clear()
         {
+            throw new NotImplementedException();
+        }
 
+        public Genre Create(Genre TEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<Genre> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Genre GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Genre Update(Genre TEntity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

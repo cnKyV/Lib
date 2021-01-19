@@ -7,11 +7,36 @@ using System.Text;
 
 namespace LIB.Infrastructure.Repositories
 {
-    public class EditorRepository : BaseRepository<Editor>
+    public class EditorRepository : IRepository<Editor>
     {
-        public EditorRepository(ILogger<Editor> logger, LibDBContext libDBContext) : base(logger, libDBContext)
+        public bool Clear()
         {
+            throw new NotImplementedException();
+        }
 
+        public Editor Create(Editor TEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<Editor> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Editor GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Editor Update(Editor TEntity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

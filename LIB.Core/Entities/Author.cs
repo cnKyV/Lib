@@ -14,7 +14,7 @@ namespace LIB.Core.Entities
         public string Surname { get; set; }
         public string About { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public ICollection<Book> Books { get; set; }
+        public ICollection<AuthorBook> Books { get; set; }
         public Contact Contact { get; set; }
     }
 }
