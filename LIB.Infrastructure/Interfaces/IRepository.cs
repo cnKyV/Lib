@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    interface IGeneralRepository<T>
+    public interface IRepository<T>
     {
         ICollection<T> GetAll();
         T GetById(int id);
@@ -12,6 +12,5 @@ namespace LIB.Infrastructure.Interfaces
         T Update(T TEntity);
         bool Clear();
         bool DeleteById(int id);
-        void SaveChanges();
     }
 }

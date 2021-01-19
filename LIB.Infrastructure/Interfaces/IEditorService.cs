@@ -1,17 +1,11 @@
-﻿using LIB.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using LIB.Contracts.ResponseModel;
+using LIB.Contracts.Shared;
+using LIB.Infrastructure.Repositories;
 
 namespace LIB.Infrastructure.Interfaces
 {
-   public interface IEditorService
+   public interface IEditorService : IService<EditorRepository,EditorViewModel, ICreateModel,IUpdateModel>
     {
-        ICollection<Editor> GetAll();
-        Editor GetById(int id);
-        Editor Create(Editor editor);
-        Editor Update(Editor editor);
-        bool Clear();
-        bool DeleteById(int id);
+
     }
 }

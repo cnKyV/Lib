@@ -6,11 +6,11 @@ using System.Text;
 
 namespace LIB.Infrastructure.Repositories
 {
-    public class GeneralRepository<T> : IGeneralRepository<T>
+    public class BaseRepository<T> : IRepository<T>
     {
-        ILogger _logger;
+        ILogger<T> _logger;
         LibDBContext _libDbContext;
-        public GeneralRepository(ILogger logger, LibDBContext libDBContext)
+        public BaseRepository(ILogger<T> logger, LibDBContext libDBContext)
         {
             _logger = logger;
             _libDbContext = libDBContext;
@@ -46,7 +46,7 @@ namespace LIB.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public T Update(T TEntity)
+        protected virtual T Update(T TEntity)
         {
             throw new NotImplementedException();
         }

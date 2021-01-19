@@ -1,17 +1,13 @@
 ﻿using LIB.Core.Entities;
+using LIB.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    public interface IGenreService
+    public interface IGenreService : IService<GenreRepository,GenreCreateResponseModel>
     {
-        ICollection<Genre> GetAll();
-        Genre GetById(int id);
-        Genre Create(Genre genre);
-        Genre Update(Genre genre);
-        bool Clear();
-        bool DeleteById(int id);
+
     }
 }

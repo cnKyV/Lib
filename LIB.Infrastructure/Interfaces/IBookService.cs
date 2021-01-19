@@ -1,17 +1,14 @@
-﻿using LIB.Core.Entities;
+﻿using LIB.Contracts.ResponseModel;
+using LIB.Core.Entities;
+using LIB.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    public interface IBookService
+    public interface IBookService : IService<BookRepository, BookCreateResponseModel>
     {
-        ICollection<Book> GetAll();
-        Book GetById(int id);
-        Book Create(Book book);
-        Book Update(Book book);
-        bool Clear();
-        bool DeleteById(int id);
+
     }
 }

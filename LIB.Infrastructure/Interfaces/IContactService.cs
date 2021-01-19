@@ -1,17 +1,14 @@
-﻿using LIB.Core.Entities;
+﻿using LIB.Contracts.ResponseModel;
+using LIB.Core.Entities;
+using LIB.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    public interface IContactService
+    public interface IContactService : IService<ContactRepository,ContactCreateResponseModel>
     {
-        ICollection<Contact> GetAll();
-        Contact GetById(int id);
-        Contact Create(Contact contact);
-        Contact Update(Contact contact);
-        bool Clear();
-        bool DeleteById(int id);
+
     }
 }

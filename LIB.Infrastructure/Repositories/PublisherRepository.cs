@@ -7,7 +7,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Repositories
 {
-    public class PublisherRepository : GeneralRepository<Publisher>
+    public class PublisherRepository : BaseRepository<Publisher>
     {
         public PublisherRepository(ILogger<Publisher> logger, LibDBContext libDBContext) : base(logger, libDBContext)
         {

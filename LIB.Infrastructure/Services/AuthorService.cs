@@ -1,4 +1,5 @@
-﻿using LIB.Core.Entities;
+﻿using LIB.Contracts.ResponseModel;
+using LIB.Core.Entities;
 using LIB.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,32 +9,22 @@ namespace LIB.Infrastructure.Services
 {
     public class AuthorService : IAuthorService
     {
-        public bool Clear()
+        public AuthorCreateResponseModel Create(Author TEntity)
         {
             throw new NotImplementedException();
         }
 
-        public Author Create(Author author)
+        public ICollection<AuthorCreateResponseModel> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteById(int id)
+        public AuthorCreateResponseModel GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<Author> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Author GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Author Update(Author author)
+        public AuthorCreateResponseModel Update(Author TEntity)
         {
             throw new NotImplementedException();
         }

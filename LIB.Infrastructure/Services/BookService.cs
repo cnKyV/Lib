@@ -1,5 +1,7 @@
-﻿using LIB.Core.Entities;
+﻿using LIB.Contracts.ResponseModel;
+using LIB.Core.Entities;
 using LIB.Infrastructure.Interfaces;
+using LIB.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,32 +10,22 @@ namespace LIB.Infrastructure.Services
 {
     public class BookService : IBookService
     {
-        public bool Clear()
+        public BookCreateResponseModel Create(BookRepository Repository)
         {
             throw new NotImplementedException();
         }
 
-        public Book Create(Book book)
+        public ICollection<BookCreateResponseModel> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteById(int id)
+        public BookCreateResponseModel GetById(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<Book> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Book GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Book Update(Book book)
+        public BookCreateResponseModel Update(BookRepository Repository)
         {
             throw new NotImplementedException();
         }

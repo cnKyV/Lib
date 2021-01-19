@@ -1,5 +1,8 @@
-﻿using LIB.Core.Entities;
+﻿using LIB.Contracts.ResponseModel;
+using LIB.Contracts.Shared;
+using LIB.Core.Entities;
 using LIB.Infrastructure.Interfaces;
+using LIB.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,32 +11,22 @@ namespace LIB.Infrastructure.Services
 {
     public class PublisherService : IPublisherService
     {
-        public bool Clear()
+        public ICreateModel Create(PublisherRepository Repository)
         {
             throw new NotImplementedException();
         }
 
-        public Publisher Create(Publisher publisher)
+        public ICollection<PublisherViewModel> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteById(int id)
+        public PublisherViewModel GetById(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<Publisher> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Publisher GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Publisher Update(Publisher publisher)
+        public IUpdateModel Update(PublisherRepository Repository)
         {
             throw new NotImplementedException();
         }
