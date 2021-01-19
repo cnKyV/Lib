@@ -3,40 +3,114 @@ using LIB.Infrastructure.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace LIB.Infrastructure.Repositories
 {
     public class GenreRepository : IRepository<Genre>
     {
+        ILogger<Genre> _logger;
+        LibDBContext _libDbContext;
+        public GenreRepository(ILogger<Genre> logger, LibDBContext libDbContext)
+        {
+            _logger = logger;
+            _libDbContext = libDbContext;
+        }
         public bool Clear()
         {
-            throw new NotImplementedException();
+            try
+            {
+                _libDbContext.Genres.RemoveRange(_libDbContext.Genres);
+                _libDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return false;
+
+            }
+            _logger.LogInformation($"Genres have been wiped out succesfully by {Environment.UserName} / {Environment.UserDomainName}");
+            return true;
         }
 
-        public Genre Create(Genre TEntity)
+
+        public Genre Create(Genre genre)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _libDbContext.Genres.Add(genre);
+                _libDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return null;
+            }
+            return genre;
         }
 
         public bool DeleteById(int id)
         {
-            throw new NotImplementedException();
+            var result = _libDbContext.Genres.FirstOrDefault(i => i.Id == id);
+            try
+            {
+                _libDbContext.Genres.Remove(result);
+                _libDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return false;
+            }
+            _logger.LogInformation($"Record with {id} ID has been removed succesfully by {Environment.UserName} / {Environment.UserDomainName}");
+            return true;
         }
 
         public ICollection<Genre> GetAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _libDbContext.Genres.ToArray();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return null;
+            }
         }
 
         public Genre GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = _libDbContext.Genres.FirstOrDefault(i => i.Id == id);
+            try
+            {
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return null;
+            }
+
+
         }
 
-        public Genre Update(Genre TEntity)
+        public Genre Update(Genre genre)
         {
-            throw new NotImplementedException();
+            var result = _libDbContext.Genres.FirstOrDefault(i=> i.Id == genre.Id);
+
+            result.Name = genre.Name;
+            try
+            {
+                _libDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return null;
+            }
+            return result;
         }
     }
 }

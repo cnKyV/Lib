@@ -94,9 +94,30 @@ namespace LIB.Infrastructure.Repositories
             }
         }
 
-        public Contact Update(Contact TEntity)
+        public Contact Update(Contact contact)
         {
-            throw new NotImplementedException();
+            var query = _libDbContext.Contacts.FirstOrDefault(i => i.Id == contact.Id);
+            query.Address = contact.Address;
+            query.City = contact.City;
+            query.Country = contact.Country;
+            query.Email = contact.Email;
+            query.Number1 = contact.Number1;
+            query.Number2 = contact.Number2;
+            query.State = contact.State;
+            query.ZipCode= contact.ZipCode;
+            query.Website= contact.Website;
+            try
+            {
+                _libDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return null;
+            }
+            _logger.LogInformation($"Record with {query.Id} Id has been updated succesfully");
+            return query;
+
         }
     }
 }
