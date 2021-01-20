@@ -11,22 +11,22 @@ namespace LIB.Infrastructure.Services
 {
     public class LibraryService : ILibraryService
     {
-        public ICreateModel Create(ICreateModel Repository)
+        public Library Create(Library author)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<LibraryViewModel> GetAll()
+        public ICollection<Library> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public LibraryViewModel GetById(int Id)
+        public Library GetById(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public IUpdateModel Update(IUpdateModel Repository)
+        public Library Update(Library author)
         {
             throw new NotImplementedException();
         }

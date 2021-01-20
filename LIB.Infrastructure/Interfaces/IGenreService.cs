@@ -8,8 +8,11 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    public interface IGenreService : IService<GenreViewModel, ICreateModel, IUpdateModel>
+    public interface IGenreService 
     {
-
+        ICollection<Genre> GetAll();
+        Genre GetById(int Id);
+        Genre Create(Genre author);
+        Genre Update(Genre author);
     }
 }

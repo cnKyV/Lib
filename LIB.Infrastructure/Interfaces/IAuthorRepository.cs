@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    interface IAuthorRepository
+   public interface IAuthorRepository
     {
         ICollection<Author> GetAll();
         Author GetById(int id);

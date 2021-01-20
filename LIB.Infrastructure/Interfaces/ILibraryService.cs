@@ -8,8 +8,11 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    public interface ILibraryService : IService<LibraryViewModel,ICreateModel,IUpdateModel>
+    public interface ILibraryService
     {
-
+        ICollection<Library> GetAll();
+        Library GetById(int Id);
+        Library Create(Library author);
+        Library Update(Library author);
     }
 }

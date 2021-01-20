@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Repositories
 {
-    public class ContactRepository : IRepository<Contact>
+    public class ContactRepository : IContactRepository
     {
         ILogger<Contact> _logger;
         LibDBContext _libDbContext;

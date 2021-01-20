@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Repositories
 {
-    public class LibraryRepository : IRepository<Library>
+    public class LibraryRepository : ILibraryRepository
     {
         ILogger<Library> _logger;
         LibDBContext _libDbContext;

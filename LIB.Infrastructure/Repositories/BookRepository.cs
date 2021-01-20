@@ -9,7 +9,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Repositories
 {
-    public class BookRepository : IRepository<Book>
+    public class BookRepository : IBookRepository
     {
         private readonly ILogger<Book> _logger;
         private readonly LibDBContext _libDbContext;

@@ -11,22 +11,22 @@ namespace LIB.Infrastructure.Services
 {
     public class GenreService : IGenreService
     {
-        public ICreateModel Create(ICreateModel Repository)
+        public Genre Create(Genre author)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<GenreViewModel> GetAll()
+        public ICollection<Genre> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public GenreViewModel GetById(int Id)
+        public Genre GetById(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public IUpdateModel Update(IUpdateModel Repository)
+        public Genre Update(Genre author)
         {
             throw new NotImplementedException();
         }

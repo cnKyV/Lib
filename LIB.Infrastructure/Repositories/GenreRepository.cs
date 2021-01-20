@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Repositories
 {
-    public class GenreRepository : IRepository<Genre>
+    public class GenreRepository : IGenreRepository
     {
         ILogger<Genre> _logger;
         LibDBContext _libDbContext;

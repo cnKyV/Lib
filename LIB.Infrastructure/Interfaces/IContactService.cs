@@ -8,8 +8,11 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    public interface IContactService : IService<ContactViewModel,ICreateModel,IUpdateModel>
+    public interface IContactService
     {
-
+        ICollection<Contact> GetAll();
+        Contact GetById(int Id);
+        Contact Create(Contact author);
+        Contact Update(Contact author);
     }
 }

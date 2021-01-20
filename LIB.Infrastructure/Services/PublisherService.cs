@@ -11,22 +11,22 @@ namespace LIB.Infrastructure.Services
 {
     public class PublisherService : IPublisherService
     {
-        public ICreateModel Create(ICreateModel Repository)
+        public Publisher Create(Publisher author)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<PublisherViewModel> GetAll()
+        public ICollection<Publisher> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public PublisherViewModel GetById(int Id)
+        public Publisher GetById(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public IUpdateModel Update(IUpdateModel Repository)
+        public Publisher Update(Publisher author)
         {
             throw new NotImplementedException();
         }

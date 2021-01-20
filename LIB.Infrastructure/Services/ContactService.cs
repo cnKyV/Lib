@@ -11,22 +11,22 @@ namespace LIB.Infrastructure.Services
 {
     public class ContactService : IContactService
     {
-        public ICreateModel Create(ICreateModel Repository)
+        public Contact Create(Contact author)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<ContactViewModel> GetAll()
+        public ICollection<Contact> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public ContactViewModel GetById(int Id)
+        public Contact GetById(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public IUpdateModel Update(IUpdateModel Repository)
+        public Contact Update(Contact author)
         {
             throw new NotImplementedException();
         }

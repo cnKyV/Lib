@@ -8,8 +8,11 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    public interface IPublisherService : IService<PublisherViewModel,ICreateModel,IUpdateModel>
+    public interface IPublisherService 
     {
-
+        ICollection<Publisher> GetAll();
+        Publisher GetById(int Id);
+        Publisher Create(Publisher author);
+        Publisher Update(Publisher author);
     }
 }

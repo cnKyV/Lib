@@ -11,22 +11,22 @@ namespace LIB.Infrastructure.Services
 {
     public class EditorService : IEditorService
     {
-        public ICreateModel Create(ICreateModel Repository)
+        public Editor Create(Editor author)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<EditorViewModel> GetAll()
+        public ICollection<Editor> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public EditorViewModel GetById(int Id)
+        public Editor GetById(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public IUpdateModel Update(IUpdateModel Repository)
+        public Editor Update(Editor author)
         {
             throw new NotImplementedException();
         }

@@ -14,35 +14,33 @@ namespace LIB.Infrastructure.Services
 {
     public class AuthorService : IAuthorService
     {
-        private readonly IMapper _mapper;
+       
         private readonly ILogger _logger;
         private readonly IAuthorRepository _authorRepository;
-        public AuthorService(IMapper mapper, ILogger logger, IAuthorRepository authorRepository)
+        public AuthorService(ILogger logger, IAuthorRepository authorRepository)
         {
-            _mapper = mapper;
             _logger = logger;
             _authorRepository = authorRepository;
         }
-        public ICreateModel Create(ICreateModel RequestModel)
+
+        public Author Create(Author author)
         {
-            Author author = _mapper.Map<Author>(RequestModel);
-            _authorRepository.Create(author);
-            return _mapper.Map<AuthorCreateResponseModel>(author);
+            return _authorRepository.Create(author);
         }
 
-        public ICollection<AuthorViewModel> GetAll()
+        public ICollection<Author> GetAll()
         {
-            throw new NotImplementedException();
+            return _authorRepository.GetAll();
         }
 
-        public AuthorViewModel GetById(int Id)
+        public Author GetById(int Id)
         {
-            throw new NotImplementedException();
+            return _authorRepository.GetById(Id);
         }
 
-        public IUpdateModel Update(IUpdateModel Repository)
+        public Author Update(Author author)
         {
-            throw new NotImplementedException();
+            return _authorRepository.Update(author);
         }
     }
 }

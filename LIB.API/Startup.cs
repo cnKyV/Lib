@@ -31,6 +31,13 @@ namespace LIB.Core
         {
             services.AddDbContext<LibDBContext>
        (options => options.UseSqlServer(Configuration.GetConnectionString("LibDb")));
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IContactRepository, ContactRepository>();
+            services.AddScoped<IEditorRepository, EditorRepository>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
+            services.AddScoped<ILibraryRepository, LibraryRepository>();
+            services.AddScoped<IPublisherRepository, PublisherRepository>();
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IContactService, ContactService>();

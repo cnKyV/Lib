@@ -10,7 +10,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Repositories
 {
-    public class AuthorRepository : IRepository<Author>
+    public class AuthorRepository : IAuthorRepository
     {
         private readonly LibDBContext _libDbContext;
         private readonly ILogger<AuthorRepository> _logger;

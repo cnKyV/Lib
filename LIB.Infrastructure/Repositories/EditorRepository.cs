@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Repositories
 {
-    public class EditorRepository : IRepository<Editor>
+    public class EditorRepository : IEditorRepository
     {
         LibDBContext _libDbContext;
         ILogger<Editor> _logger;
