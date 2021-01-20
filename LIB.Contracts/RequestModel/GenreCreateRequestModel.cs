@@ -7,5 +7,7 @@ namespace LIB.Contracts.RequestModel
 {
     public class GenreCreateRequestModel : ICreateModel
     {
+        public string Name { get; set; }
+        public ICollection<int> Books { get; set; }
     }
 }

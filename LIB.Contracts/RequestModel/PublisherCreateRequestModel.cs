@@ -7,5 +7,10 @@ namespace LIB.Contracts.RequestModel
 {
     public class PublisherCreateRequestModel : ICreateModel
     {
+        public string Name { get; set; }
+        public string About { get; set; }
+        public ICollection<int> Editors { get; set; }
+        public ICollection<int> Books { get; set; }
+        public int ContactId { get; set; }
     }
 }

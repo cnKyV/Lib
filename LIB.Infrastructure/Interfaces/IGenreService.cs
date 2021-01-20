@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    public interface IGenreService : IService<GenreRepository,GenreViewModel, ICreateModel, IUpdateModel>
+    public interface IGenreService : IService<GenreViewModel, ICreateModel, IUpdateModel>
     {
 
     }

@@ -6,9 +6,8 @@ namespace LIB.Core.Entities
 {
     public class EditorPublisher
     {
-        public int EditorId { get; set; }
+        public int Id { get; set; }
         public Editor Editor { get; set; }
-        public int PublisherId { get; set; }
         public Publisher Publisher { get; set; }
     }
 }

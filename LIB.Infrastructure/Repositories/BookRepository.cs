@@ -102,6 +102,13 @@ namespace LIB.Infrastructure.Repositories
             query.Name = book.Name;
             query.Description = book.Description;
             query.Edition = book.Edition;
+            query.Pages = book.Pages;
+            query.PdfSource = book.PdfSource;
+            query.Authors = book.Authors;
+            query.Editors = book.Editors;
+            query.Genres = book.Genres;
+            query.Libraries = book.Libraries;
+            query.Publishers = book.Publishers;
             try
             {
                 _libDbContext.SaveChanges();

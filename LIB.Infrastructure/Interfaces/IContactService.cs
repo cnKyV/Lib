@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    public interface IContactService : IService<ContactRepository,ContactViewModel,ICreateModel,IUpdateModel>
+    public interface IContactService : IService<ContactViewModel,ICreateModel,IUpdateModel>
     {
 
     }

@@ -11,7 +11,7 @@ namespace LIB.Infrastructure.Services
 {
     public class LibraryService : ILibraryService
     {
-        public ICreateModel Create(LibraryRepository Repository)
+        public ICreateModel Create(ICreateModel Repository)
         {
             throw new NotImplementedException();
         }
@@ -26,7 +26,7 @@ namespace LIB.Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public IUpdateModel Update(LibraryRepository Repository)
+        public IUpdateModel Update(IUpdateModel Repository)
         {
             throw new NotImplementedException();
         }

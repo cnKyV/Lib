@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
 {
-    public interface IAuthorService : IService<AuthorRepository,AuthorViewModel,ICreateModel,IUpdateModel>
+    public interface IAuthorService : IService<AuthorViewModel,ICreateModel,IUpdateModel>
     {
 
     }

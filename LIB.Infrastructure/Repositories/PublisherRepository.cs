@@ -99,6 +99,9 @@ namespace LIB.Infrastructure.Repositories
 
             result.Name = publisher.Name;
             result.About = publisher.About;
+            result.Contact = publisher.Contact;
+            result.Books = publisher.Books;
+            result.Editors = publisher.Editors;
             try
             {
                 _libDbContext.SaveChanges();

@@ -101,6 +101,7 @@ namespace LIB.Infrastructure.Repositories
             var result = _libDbContext.Genres.FirstOrDefault(i=> i.Id == genre.Id);
 
             result.Name = genre.Name;
+            result.Books = genre.Books;
             try
             {
                 _libDbContext.SaveChanges();

@@ -4,7 +4,7 @@ using LIB.Infrastructure.Repositories;
 
 namespace LIB.Infrastructure.Interfaces
 {
-   public interface IEditorService : IService<EditorRepository,EditorViewModel, ICreateModel,IUpdateModel>
+   public interface IEditorService : IService<EditorViewModel, ICreateModel,IUpdateModel>
     {
 
     }

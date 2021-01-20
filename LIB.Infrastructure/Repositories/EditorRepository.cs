@@ -97,6 +97,8 @@ namespace LIB.Infrastructure.Repositories
             query.Surname = editor.Surname;
             query.Address = editor.Address;
             query.About = editor.About;
+            query.Publishers = editor.Publishers;
+            query.DateOfBirth = editor.DateOfBirth;
             try
             {
                 _libDbContext.SaveChanges();

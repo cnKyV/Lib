@@ -7,5 +7,8 @@ namespace LIB.Contracts.RequestModel
 {
     public class LibraryCreateRequestModel : ICreateModel
     {
+        public string Name { get; set; }
+        public ICollection<int> Books { get; set; }
+        public int ContactId { get; set; }
     }
 }

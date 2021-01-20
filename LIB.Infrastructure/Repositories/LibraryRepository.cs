@@ -98,6 +98,8 @@ namespace LIB.Infrastructure.Repositories
             var result = _libDbContext.Libraries.FirstOrDefault(i => i.Id == library.Id);
 
             result.Name = library.Name;
+            result.Contact = library.Contact;
+            result.Books = library.Books;
             
             try
             {

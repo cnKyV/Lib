@@ -7,5 +7,9 @@ namespace LIB.Contracts.RequestModel
 {
     public class LibraryUpdateRequestModel : IUpdateModel
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public ICollection<int> Books { get; set; }
+        public int ContactId { get; set; }
     }
 }
