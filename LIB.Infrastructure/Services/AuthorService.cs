@@ -15,9 +15,9 @@ namespace LIB.Infrastructure.Services
     public class AuthorService : IAuthorService
     {
        
-        private readonly ILogger _logger;
+        private readonly ILogger<AuthorService> _logger;
         private readonly IAuthorRepository _authorRepository;
-        public AuthorService(ILogger logger, IAuthorRepository authorRepository)
+        public AuthorService(ILogger<AuthorService> logger, IAuthorRepository authorRepository)
         {
             _logger = logger;
             _authorRepository = authorRepository;
@@ -35,12 +35,22 @@ namespace LIB.Infrastructure.Services
 
         public Author GetById(int Id)
         {
-            return _authorRepository.GetById(Id);
+            var author = _authorRepository.GetById(Id);
+            if (author == null)
+            {
+                _logger.LogInformation($"Unable to find author with Id: {Id}");
+                return null;
+            }
+            _logger.LogInformation($"Succesfully returned author with Id: {author.Id}");
+            return author; //can be mapped to domain here with a function such as MapDtoToDomain(author); --Dto = data table object = entity
         }
+
 
         public Author Update(Author author)
         {
             return _authorRepository.Update(author);
         }
+
+        
     }
 }

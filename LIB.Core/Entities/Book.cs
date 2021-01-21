@@ -19,6 +19,5 @@ namespace LIB.Core.Entities
         public ICollection<BookEditor> Editors { get; set; }
         public ICollection<BookPublisher> Publishers { get; set; }
         public ICollection<BookGenre> Genres { get; set; }
-        public ICollection<BookLibrary> Libraries { get; set; }
     }
 }

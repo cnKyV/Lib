@@ -28,11 +28,9 @@ namespace LIB.Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-
                 _logger.LogError(ex, ex.Message);
                 return false;
             }
-            _logger.LogInformation($"Authors Succesfully Cleared by {Environment.UserDomainName} / {Environment.UserName}");
             return true;
         }
 
@@ -48,7 +46,6 @@ namespace LIB.Infrastructure.Repositories
                 _logger.LogError(ex, ex.Message);
                 return null;
             }
-            _logger.LogInformation($"Author with ID: {author.Id} has been succesfully created.");
             return author;
         }
 
@@ -65,7 +62,6 @@ namespace LIB.Infrastructure.Repositories
                 _logger.LogError(ex, ex.Message);
                 return false;
             }
-            _logger.LogInformation($"Author with ID: {id} has been succesfully removed.");
             return true;
         }
 
@@ -77,7 +73,6 @@ namespace LIB.Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-
                 _logger.LogError(ex, ex.Message);
                 return null;
             }
@@ -127,7 +122,6 @@ namespace LIB.Infrastructure.Repositories
                 _logger.LogError(ex, ex.Message);
                 return null;
             }
-            _logger.LogInformation($"Record with {author.Id} ID has been updated by {Environment.UserDomainName} / {Environment.UserName}");
             return _author;
         }
     }

@@ -45,12 +45,10 @@ namespace LIB.Infrastructure
         public DbSet<Editor> Editors{ get; set; }
         public DbSet<Publisher> Publishers{ get; set; }
         public DbSet<Genre> Genres{ get; set; }
-        public DbSet<Library> Libraries{ get; set; }
         public DbSet<Contact> Contacts{ get; set; }
         public DbSet<AuthorBook> AuthorBooks { get; set; }
         public DbSet<BookEditor> BookEditors { get; set; }
         public DbSet<BookGenre> BookGenres { get; set; }
-        public DbSet<BookLibrary> BookLibraries{ get; set; }
         public DbSet<BookPublisher> BookPublishers{ get; set; }
         public DbSet<EditorPublisher> EditorPublishers{ get; set; }
     }

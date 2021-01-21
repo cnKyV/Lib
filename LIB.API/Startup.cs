@@ -36,14 +36,12 @@ namespace LIB.Core
             services.AddScoped<IContactRepository, ContactRepository>();
             services.AddScoped<IEditorRepository, EditorRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
-            services.AddScoped<ILibraryRepository, LibraryRepository>();
             services.AddScoped<IPublisherRepository, PublisherRepository>();
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<IEditorService, EditorService>();
             services.AddScoped<IGenreService, GenreService>();
-            services.AddScoped<ILibraryService, LibraryService>();
             services.AddScoped<IPublisherService, PublisherService>();
             services.AddAutoMapper(typeof(Startup));
             services.AddControllers();

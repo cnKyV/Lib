@@ -107,7 +107,6 @@ namespace LIB.Infrastructure.Repositories
             query.Authors = book.Authors;
             query.Editors = book.Editors;
             query.Genres = book.Genres;
-            query.Libraries = book.Libraries;
             query.Publishers = book.Publishers;
             try
             {
