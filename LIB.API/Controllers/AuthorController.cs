@@ -1,4 +1,7 @@
-﻿using LIB.Core.Entities;
+﻿using AutoMapper;
+using LIB.Contracts.RequestModel;
+using LIB.Contracts.ResponseModel;
+using LIB.Core.Entities;
 using LIB.Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,16 +16,21 @@ namespace LIB.API.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
-        
-        public AuthorController()
+        private readonly IMapper _mapper;
+        private readonly IAuthorService _authorService;
+        public AuthorController(IMapper mapper, IAuthorService authorService)
         {
-            
+            _mapper = mapper;
+            _authorService = authorService;
         }
 
         [HttpPost]
-       public IActionResult Create(Author author)
+       public IActionResult Create(AuthorCreateModel author)
         {
-            return Ok();
+            var query = _mapper.Map<Author>(author);
+
+            var result = _mapper.Map<AuthorResponseModel>(_authorService.Create(query));
+            return Ok(result);
         }
         [HttpGet]
         public IActionResult GetAll()
@@ -32,10 +40,10 @@ namespace LIB.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok();
+            return Ok(_authorService.GetById(id));
         }
         [HttpPatch]
-        public IActionResult Update(Author author)
+        public IActionResult Update(AuthorUpdateModel author)
         {
             return Ok();
         }

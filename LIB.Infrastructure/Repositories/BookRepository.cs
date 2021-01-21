@@ -47,7 +47,6 @@ namespace LIB.Infrastructure.Repositories
                 _logger.LogError(ex,ex.Message);
                 return null;
             }
-            _logger.LogInformation($"Book with ID: {book.Id} has been succesfully created.");
             return book;
         }
 
@@ -64,7 +63,6 @@ namespace LIB.Infrastructure.Repositories
                 _logger.LogError(ex, ex.Message);
                 return false;
             }
-            _logger.LogInformation($"Book with ID: {id} has been succesfully removed.");
             return true;
         }
 

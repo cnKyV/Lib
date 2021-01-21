@@ -19,7 +19,7 @@ namespace LIB.Infrastructure.Repositories
             _libDbContext = libDbContext;
             _logger = logger;
         }
-        public bool Clear()
+        public bool Clear()//bs
         {
             try
             {
@@ -69,7 +69,7 @@ namespace LIB.Infrastructure.Repositories
         {
             try
             {
-                return _libDbContext.Authors.ToArray();
+                return _libDbContext.Authors.Include(i=>i.Books).ToArray();
             }
             catch (Exception ex)
             {
@@ -82,7 +82,7 @@ namespace LIB.Infrastructure.Repositories
         {
             try
             {
-                return _libDbContext.Authors.FirstOrDefault(i => i.Id == id);
+                return _libDbContext.Authors.Include(i=>i.Books).FirstOrDefault(i => i.Id == id);
             }
             catch (Exception ex)
             {
@@ -107,7 +107,7 @@ namespace LIB.Infrastructure.Repositories
 
         public Author Update(Author author)
         {
-            var _author = _libDbContext.Authors.FirstOrDefault(i => i.Id == author.Id);
+            var _author = _libDbContext.Authors.Include(i=>i.Books).FirstOrDefault(i => i.Id == author.Id);
             try
             {
                 _author.Name = author.Name;

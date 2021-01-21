@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LIB.Contracts.ResponseModel
 {
-    public class ContactUpdateResponseModel : IUpdateModel
+    public class GenreResponseModel : ICreateModel
     {
     }
 }

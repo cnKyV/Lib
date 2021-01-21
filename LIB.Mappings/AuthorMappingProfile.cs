@@ -12,10 +12,11 @@ namespace LIB.Mapping
     {
         public AuthorMappingProfile()
         {
-            CreateMap<AuthorCreateRequestModel, Author>()
-                .ForMember(entity => entity.Books, model => model.MapFrom(i=> new List<AuthorBook>()));
-            CreateMap<Author, AuthorCreateResponseModel>();
-               // .ForMember(model => )
+            CreateMap<Author, AuthorResponseModel>();
+            CreateMap<AuthorCreateModel,Author>()
+                  .ForMember(entity => entity.Books, model => model.MapFrom(i => new List<AuthorBook>()))
+            .ForMember(entity => entity.Contact, model => model.MapFrom(i => new Contact()));
+            //<model,entity> .ForMember(entity => entity.Books, model => model.MapFrom(i => new List<AuthorBook>()));
         }
 
     }

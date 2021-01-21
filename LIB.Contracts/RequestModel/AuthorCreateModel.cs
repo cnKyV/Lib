@@ -6,13 +6,13 @@ using System.Text;
 
 namespace LIB.Contracts.RequestModel
 {
-    public class AuthorCreateRequestModel : ICreateModel
+    public class AuthorCreateModel : ICreateModel
     {
         public string Name { get; set; }
         public string Surname { get; set; }
         public string About { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public ICollection<int> Books { get; set; }
-        public Contact Contact { get; set; }
+        public int ContactId { get; set; }
     }
 }

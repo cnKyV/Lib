@@ -25,7 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LIB.Contracts\LIB.Contracts.csproj" />
     <ProjectReference Include="..\LIB.Infrastructure\LIB.Infrastructure.csproj" />
+    <ProjectReference Include="..\LIB.Mappings\LIB.Mapping.csproj" />
   </ItemGroup>
 
 </Project>

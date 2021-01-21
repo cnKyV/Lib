@@ -6,7 +6,7 @@ using System.Text;
 
 namespace LIB.Contracts.RequestModel
 {
-    public class AuthorUpdateRequestModel : IUpdateModel
+    public class AuthorUpdateModel : IUpdateModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

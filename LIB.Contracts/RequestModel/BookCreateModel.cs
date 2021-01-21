@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LIB.Contracts.RequestModel
 {
-    public class BookCreateRequestModel : ICreateModel
+    public class BookCreateModel : ICreateModel
     {
         public string Name { get; set; }
         public string Description { get; set; }

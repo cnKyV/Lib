@@ -4,6 +4,7 @@ using LIB.Infrastructure;
 using LIB.Infrastructure.Interfaces;
 using LIB.Infrastructure.Repositories;
 using LIB.Infrastructure.Services;
+using LIB.Mapping;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -43,7 +44,7 @@ namespace LIB.Core
             services.AddScoped<IEditorService, EditorService>();
             services.AddScoped<IGenreService, GenreService>();
             services.AddScoped<IPublisherService, PublisherService>();
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(AuthorMappingProfile));
             services.AddControllers();
 
         }

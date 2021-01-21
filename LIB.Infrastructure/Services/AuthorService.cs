@@ -25,7 +25,8 @@ namespace LIB.Infrastructure.Services
 
         public Author Create(Author author)
         {
-            return _authorRepository.Create(author);
+            var query = _authorRepository.Create(author);
+            return query;
         }
 
         public ICollection<Author> GetAll()

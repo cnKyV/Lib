@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LIB.Contracts.RequestModel
 {
-    public class BookUpdateRequestModel : IUpdateModel
+    public class BookUpdateModel : IUpdateModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
