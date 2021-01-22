@@ -18,19 +18,19 @@ namespace LIB.API.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IAuthorService _authorService;
-        public AuthorController(IMapper mapper, IAuthorService authorService)
+        private readonly IBookService _bookService;
+        public AuthorController(IMapper mapper, IAuthorService authorService, IBookService bookService)
         {
             _mapper = mapper;
             _authorService = authorService;
+            _bookService = bookService;
         }
 
         [HttpPost]
        public IActionResult Create(AuthorCreateModel author)
         {
-            var query = _mapper.Map<Author>(author);
 
-            var result = _mapper.Map<AuthorResponseModel>(_authorService.Create(query));
-            return Ok(result);
+            return Ok();
         }
         [HttpGet]
         public IActionResult GetAll()

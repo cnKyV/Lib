@@ -4,4 +4,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Handlers\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Responses\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LIB.Contracts\LIB.Contracts.csproj" />
+    <ProjectReference Include="..\LIB.Core\LIB.Core.csproj" />
+    <ProjectReference Include="..\LIB.Infrastructure\LIB.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
