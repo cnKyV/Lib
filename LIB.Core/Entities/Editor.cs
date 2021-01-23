@@ -13,6 +13,6 @@ namespace LIB.Core.Entities
         public DateTime? DateOfBirth { get; set; }
         public ICollection<BookEditor> Books { get; set; }
         public ICollection<EditorPublisher> Publishers { get; set; }
-        public Contact Address { get; set; }
+        public Contact Contact { get; set; }
     }
 }

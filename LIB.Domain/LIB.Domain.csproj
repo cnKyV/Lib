@@ -6,8 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Handlers\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Responses\" />
+    <Folder Include="Views\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using LIB.Contracts.RequestModel;
 using LIB.Contracts.ResponseModel;
-using LIB.Core.Entities;
-using LIB.Infrastructure.Interfaces;
+using LIB.Domain.Interfaces;
+using LIB.Domain.Requests;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,21 +16,18 @@ namespace LIB.API.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
-        private readonly IMapper _mapper;
-        private readonly IAuthorService _authorService;
-        private readonly IBookService _bookService;
-        public AuthorController(IMapper mapper, IAuthorService authorService, IBookService bookService)
+        private readonly IAuthorRequest _authorRequest;
+
+        public AuthorController(IAuthorRequest authorRequest)
         {
-            _mapper = mapper;
-            _authorService = authorService;
-            _bookService = bookService;
+            _authorRequest = authorRequest;
         }
 
         [HttpPost]
        public IActionResult Create(AuthorCreateModel author)
         {
 
-            return Ok();
+            return Ok(_authorRequest.CreateRequest(author));
         }
         [HttpGet]
         public IActionResult GetAll()
@@ -40,7 +37,7 @@ namespace LIB.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok(_authorService.GetById(id));
+            return Ok();
         }
         [HttpPatch]
         public IActionResult Update(AuthorUpdateModel author)

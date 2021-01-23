@@ -1,5 +1,7 @@
 using AutoMapper;
 using LIB.Core.Entities;
+using LIB.Domain.Interfaces;
+using LIB.Domain.Requests;
 using LIB.Infrastructure;
 using LIB.Infrastructure.Interfaces;
 using LIB.Infrastructure.Repositories;
@@ -44,6 +46,7 @@ namespace LIB.Core
             services.AddScoped<IEditorService, EditorService>();
             services.AddScoped<IGenreService, GenreService>();
             services.AddScoped<IPublisherService, PublisherService>();
+            services.AddScoped<IAuthorRequest, AuthorRequest>();
             services.AddAutoMapper(typeof(AuthorMappingProfile));
             services.AddControllers();
 

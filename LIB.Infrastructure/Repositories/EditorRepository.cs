@@ -95,7 +95,7 @@ namespace LIB.Infrastructure.Repositories
             var query = _libDbContext.Editors.FirstOrDefault(i => i.Id == editor.Id);
             query.Name = editor.Name;
             query.Surname = editor.Surname;
-            query.Address = editor.Address;
+            query.Contact = editor.Contact;
             query.About = editor.About;
             query.Publishers = editor.Publishers;
             query.DateOfBirth = editor.DateOfBirth;
