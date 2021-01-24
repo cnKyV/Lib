@@ -39,7 +39,7 @@ namespace LIB.API.Controllers
         {
             return Ok();
         }
-        [HttpPatch]
+        [HttpPut]
         public IActionResult Update(AuthorUpdateModel author)
         {
             return Ok();

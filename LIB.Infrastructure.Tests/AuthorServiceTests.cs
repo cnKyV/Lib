@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using Xunit;
 
@@ -82,6 +84,36 @@ namespace LIB.Infrastructure.Tests
             It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)
                 ));
 
+        }
+        [Fact]
+        public void GetMultipleId_ShouldReturnAll_WithMatchingId()
+        {
+            //Arrange
+            Collection<int> authorIds = new Collection<int>();
+            authorIds.Add(1);
+            authorIds.Add(2);
+            authorIds.Add(3);
+            authorIds.Add(4);
+            authorIds.Add(5);
+
+            ICollection<Author> authors = new List<Author>();
+            authors.Add(new Author() {Id = 1, Name = "Cenkay", Surname = "Vergili", About = "WORSERERER"});
+            authors.Add(new Author() {Id = 2, Name = "Cenkay", Surname = "Vergili", About = "WORSE"});
+            authors.Add(new Author() {Id = 3, Name = "Cenkay", Surname = "Vergili"});
+            authors.Add(new Author() {Id = 4, Name = "Cenkay", Surname = "Vergili"});
+            authors.Add(new Author() {Id = 5, Name = "Cenkay", Surname = "Vergili"});
+            authors.Add(new Author() {Id = 6, Name = "Cenkay", Surname = "Vergili"});
+
+            _authorRepoMock.Setup(i => i.GetMultipleById(authorIds))
+                .Returns(authors.ToList());
+
+
+            //Act
+            var authrs = _sut.GetMultipleByIds(authorIds);
+            //Assert
+            var auth1 = authors.ToList().FirstOrDefault(i => i.Id == 1);
+            var auth1expected = authors.ToList().FirstOrDefault(i => i.Id == 2);
+            Assert.Equal(auth1, auth1expected);
         }
     }
 }

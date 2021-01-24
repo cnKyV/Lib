@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -64,6 +65,11 @@ namespace LIB.Infrastructure.Repositories
                 return false;
             }
             return true;
+        }
+
+        public ICollection<Book> GetMultipleById(ICollection<int> ids)
+        {
+            return  _libDbContext.Books.Where(i => ids.Contains(i.Id)).Select(i=>i).ToList();
         }
 
         public ICollection<Book> GetAll()

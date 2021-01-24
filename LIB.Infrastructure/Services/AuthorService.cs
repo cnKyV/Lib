@@ -8,6 +8,7 @@ using LIB.Infrastructure.Repositories;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace LIB.Infrastructure.Services
@@ -44,6 +45,11 @@ namespace LIB.Infrastructure.Services
             }
             _logger.LogInformation($"Succesfully returned author with Id: {author.Id}");
             return author; //can be mapped to domain here with a function such as MapDtoToDomain(author); --Dto = data table object = entity
+        }
+
+        public ICollection<Author> GetMultipleByIds(Collection<int> ids)
+        {
+            return _authorRepository.GetMultipleById(ids);
         }
 
 

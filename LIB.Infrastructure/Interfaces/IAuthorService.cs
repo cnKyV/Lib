@@ -4,6 +4,7 @@ using LIB.Core.Entities;
 using LIB.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
@@ -14,5 +15,6 @@ namespace LIB.Infrastructure.Interfaces
         Author GetById(int Id);
         Author Create(Author author);
         Author Update(Author author);
+        public ICollection<Author> GetMultipleByIds(Collection<int> ids);
     }
 }

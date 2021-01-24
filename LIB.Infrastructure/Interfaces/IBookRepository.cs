@@ -1,6 +1,7 @@
 ﻿using LIB.Core.Entities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace LIB.Infrastructure.Interfaces
@@ -13,5 +14,6 @@ namespace LIB.Infrastructure.Interfaces
         Book Update(Book book);
         bool Clear();
         bool DeleteById(int id);
+        public ICollection<Book> GetMultipleById(ICollection<int> ids);
     }
 }

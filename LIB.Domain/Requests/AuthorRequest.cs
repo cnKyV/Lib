@@ -8,6 +8,8 @@ using LIB.Infrastructure.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace LIB.Domain.Requests
@@ -28,27 +30,28 @@ namespace LIB.Domain.Requests
         public AuthorResponseModel CreateRequest(AuthorCreateModel author)
         {
             var query = _mapper.Map<Author>(author);
-            foreach (var authorbook in author.Books)
+            var result = _bookService.GetMultipleByIds(author.Books);
+           
+            foreach (var ids in result)
             {
                 var moq = new AuthorBook();
-                moq.Book = _bookService.GetById(authorbook);
+                moq.Book = ids;
                 query.Books.Add(moq);
             }
+            // foreach (var authorbook in author.Books)
+            // {
+            //     var moq = new AuthorBook();
+            //     moq.Book = _bookService.GetById(authorbook);
+            //     query.Books.Add(moq);
+            // }
             _authorService.Create(query);
             var response = _mapper.Map<AuthorResponseModel>(query);
             foreach (var books in query.Books)
             {
                 response.Books.Add(books.Book.Id);
             }
-            try
-            {
-                return response;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
+            return response;
+
 
 
         }

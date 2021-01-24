@@ -4,9 +4,11 @@ using LIB.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace LIB.Infrastructure.Repositories
 {
@@ -24,7 +26,6 @@ namespace LIB.Infrastructure.Repositories
             try
             {
                 _libDbContext.Authors.RemoveRange(_libDbContext.Authors);
-                _libDbContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -36,17 +37,8 @@ namespace LIB.Infrastructure.Repositories
 
         public Author Create(Author author)
         {
-            try
-            {
-                _libDbContext.Authors.Add(author);
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
-            return author;
+            _libDbContext.Authors.Add(author);
+                return author;
         }
 
         public bool DeleteById(int id)
@@ -55,7 +47,6 @@ namespace LIB.Infrastructure.Repositories
             try
             {
                 _libDbContext.Authors.Remove(author);
-                _libDbContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -67,29 +58,17 @@ namespace LIB.Infrastructure.Repositories
 
         public ICollection<Author> GetAll()
         {
-            try
-            {
-                return _libDbContext.Authors.Include(i=>i.Books).ToArray();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
+            return _libDbContext.Authors.Include(i=>i.Books).ToArray();
         }
 
         public Author GetById(int id)
         {
-            try
-            {
-                return _libDbContext.Authors.Include(i=>i.Books).FirstOrDefault(i => i.Id == id);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
-            
+            return _libDbContext.Authors.Include(i=>i.Books).FirstOrDefault(i => i.Id == id);
+        }
+
+        public ICollection<Author> GetMultipleById(Collection<int> ids)
+        {
+          return  _libDbContext.Authors.Where(i => ids.Contains(i.Id)).Select(i=>i).ToList();
         }
 
         public void SaveChanges()
@@ -108,21 +87,13 @@ namespace LIB.Infrastructure.Repositories
         public Author Update(Author author)
         {
             var _author = _libDbContext.Authors.Include(i=>i.Books).FirstOrDefault(i => i.Id == author.Id);
-            try
-            {
                 _author.Name = author.Name;
                 _author.Surname = author.Surname;
                 _author.About = author.About;
                 _author.DateOfBirth = author.DateOfBirth;
                 _author.Books = author.Books;
-                _libDbContext.SaveChanges();     
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
-            return _author;
+                return _author;
         }
+        
     }
 }
