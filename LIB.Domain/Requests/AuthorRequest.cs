@@ -71,9 +71,16 @@ namespace LIB.Domain.Requests
             dbAuthor.About = query.About;
             dbAuthor.DateOfBirth = query.DateOfBirth;
             dbAuthor.Books = query.Books;
+            //contact
+            
+            
+            
+            
+            var result = _mapper.Map<AuthorResponseModel>(dbAuthor);
+            return result;
 
 
-            throw new NotImplementedException();
+
         }
     }
 }

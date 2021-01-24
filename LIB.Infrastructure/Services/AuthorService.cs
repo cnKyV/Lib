@@ -27,6 +27,7 @@ namespace LIB.Infrastructure.Services
         public Author Create(Author author)
         {
             var query = _authorRepository.Create(author);
+            _authorRepository.SaveChanges();
             return query;
         }
 
@@ -47,7 +48,7 @@ namespace LIB.Infrastructure.Services
             return author; //can be mapped to domain here with a function such as MapDtoToDomain(author); --Dto = data table object = entity
         }
 
-        public ICollection<Author> GetMultipleByIds(Collection<int> ids)
+        public IEnumerable<Author> GetMultipleByIds(IEnumerable<int> ids)
         {
             return _authorRepository.GetMultipleById(ids);
         }

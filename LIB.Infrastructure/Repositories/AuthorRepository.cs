@@ -66,7 +66,7 @@ namespace LIB.Infrastructure.Repositories
             return _libDbContext.Authors.Include(i=>i.Books).FirstOrDefault(i => i.Id == id);
         }
 
-        public ICollection<Author> GetMultipleById(Collection<int> ids)
+        public IEnumerable<Author> GetMultipleById(IEnumerable<int> ids)
         {
           return  _libDbContext.Authors.Where(i => ids.Contains(i.Id)).Select(i=>i).ToList();
         }

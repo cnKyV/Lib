@@ -15,6 +15,6 @@ namespace LIB.Infrastructure.Interfaces
         Author GetById(int Id);
         Author Create(Author author);
         Author Update(Author author);
-        public ICollection<Author> GetMultipleByIds(Collection<int> ids);
+        public IEnumerable<Author> GetMultipleByIds(IEnumerable<int> ids);
     }
 }

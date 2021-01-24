@@ -67,7 +67,7 @@ namespace LIB.Infrastructure.Repositories
             return true;
         }
 
-        public ICollection<Book> GetMultipleById(ICollection<int> ids)
+        public IEnumerable<Book> GetMultipleById(IEnumerable<int> ids)
         {
             return  _libDbContext.Books.Where(i => ids.Contains(i.Id)).Select(i=>i).ToList();
         }

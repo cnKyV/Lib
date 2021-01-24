@@ -70,7 +70,7 @@ namespace LIB.Infrastructure.Services
             return result;
         }
 
-        public ICollection<Book> GetMultipleByIds(ICollection<int> ids)
+        public IEnumerable<Book> GetMultipleByIds(IEnumerable<int> ids)
         {
             return _bookRepository.GetMultipleById(ids);
         }
