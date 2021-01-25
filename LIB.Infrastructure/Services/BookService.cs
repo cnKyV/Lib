@@ -29,6 +29,7 @@ namespace LIB.Infrastructure.Services
                 _logger.LogInformation($"Book with Id: {book.Id} is not found.");
                 return null;
             }
+            _bookRepository.SaveChanges();
             _logger.LogInformation($"Book with Id: {query.Id} has been succesfully created.");
             return query;
             
@@ -55,6 +56,7 @@ namespace LIB.Infrastructure.Services
                 _logger.LogInformation($"Couldn't find a book with Id: {Id}");
                 return null;
             }
+            
             return result;
         }
 
@@ -66,6 +68,7 @@ namespace LIB.Infrastructure.Services
                 _logger.LogInformation($"Couldn't find a book with Id: {book.Id}");
                 return null;
             }
+            _bookRepository.SaveChanges();
             _logger.LogInformation($"Book with Id: {result.Id} has been succesfully updated.");
             return result;
         }
@@ -73,6 +76,16 @@ namespace LIB.Infrastructure.Services
         public IEnumerable<Book> GetMultipleByIds(IEnumerable<int> ids)
         {
             return _bookRepository.GetMultipleById(ids);
+        }
+
+        public bool Clear()
+        {
+            return _bookRepository.Clear();
+        }
+
+        public bool DeleteById(int id)
+        {
+            return _bookRepository.DeleteById(id);
         }
     }
 }

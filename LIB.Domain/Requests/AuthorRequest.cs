@@ -51,36 +51,56 @@ namespace LIB.Domain.Requests
                 response.Books.Add(books.Book.Id);
             }
             return response;
-
-
-
         }
+        
         public AuthorResponseModel UpdateRequest(AuthorUpdateModel author)
         {
             var query = _mapper.Map<Author>(author);
-            foreach (var BookId in author.Books)
+            var result = _bookService.GetMultipleByIds(author.Books);
+           
+            foreach (var ids in result)
             {
                 var moq = new AuthorBook();
-                moq.Book = _bookService.GetById(BookId);
+                moq.Book = ids;
                 query.Books.Add(moq);
             }
-            var dbAuthor = _authorService.GetById(author.Id);
+            // var dbAuthor = _authorService.GetById(author.Id);
+            // dbAuthor.Name = query.Name;
+            // dbAuthor.Surname = query.Surname;
+            // dbAuthor.About = query.About;
+            // dbAuthor.DateOfBirth = query.DateOfBirth;
+            // dbAuthor.Books = query.Books;
+            _authorService.Update(query);
+            _authorService.SaveChanges();
+            var model = _mapper.Map<AuthorResponseModel>(query);
+            return model;
+        }
+        
+        public AuthorResponseModel AuthorView(int id)
+        {
+            return _mapper.Map<AuthorResponseModel>(_authorService.GetById(id));
+        }
 
-            dbAuthor.Name = query.Name;
-            dbAuthor.Surname = query.Surname;
-            dbAuthor.About = query.About;
-            dbAuthor.DateOfBirth = query.DateOfBirth;
-            dbAuthor.Books = query.Books;
-            //contact
-            
-            
-            
-            
-            var result = _mapper.Map<AuthorResponseModel>(dbAuthor);
+        public bool Clear()
+        {
+            return _authorService.Clear();
+        }
+
+        public bool DeleteById(int id)
+        {
+            return _authorService.DeleteById(id);
+        }
+        
+
+        public IEnumerable<AuthorResponseModel> AuthourViewMultiple()
+        {
+            //var query = _authorService.GetAll();
+            // foreach (var author in query)
+            // {
+            //     yield return _mapper.Map<AuthorResponseModel>(author);
+            // }
+            var result = _mapper.Map<IEnumerable<AuthorResponseModel>>(_authorService.GetAll());
             return result;
-
-
-
         }
     }
 }

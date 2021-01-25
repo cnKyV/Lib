@@ -23,9 +23,10 @@ namespace LIB.Infrastructure.Repositories
         }
         public bool Clear()//bs
         {
+            var query = _libDbContext.Authors;
             try
             {
-                _libDbContext.Authors.RemoveRange(_libDbContext.Authors);
+                _libDbContext.Authors.RemoveRange(query);
             }
             catch (Exception ex)
             {
@@ -43,7 +44,7 @@ namespace LIB.Infrastructure.Repositories
 
         public bool DeleteById(int id)
         {
-            var author = _libDbContext.Authors.FirstOrDefault(i => i.Id == id);
+            var author = _libDbContext.Authors.Include(i=>i.Books).FirstOrDefault(i => i.Id == id);
             try
             {
                 _libDbContext.Authors.Remove(author);

@@ -32,27 +32,27 @@ namespace LIB.API.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok();
+            return Ok(_authorRequest.AuthourViewMultiple());
         }
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok();
+            return Ok(_authorRequest.AuthorView(id));
         }
         [HttpPut]
         public IActionResult Update(AuthorUpdateModel author)
         {
-            return Ok();
+            return Ok(_authorRequest.UpdateRequest((author)));
         }
         [HttpDelete]
         public IActionResult Clear()
         {
-            return Ok();
+            return Ok(_authorRequest.Clear());
         }
         [HttpDelete("{id}")]
         public IActionResult DeleteById(int id)
         {
-            return Ok();
+            return Ok(_authorRequest.DeleteById(id));
         }
 
     }

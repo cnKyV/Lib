@@ -2,7 +2,9 @@
 using LIB.Contracts.ResponseModel;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using LIB.Core.Entities;
 
 namespace LIB.Domain.Interfaces
 {
@@ -10,5 +12,9 @@ namespace LIB.Domain.Interfaces
     {
         public AuthorResponseModel CreateRequest(AuthorCreateModel author);
         public AuthorResponseModel UpdateRequest(AuthorUpdateModel author);
+        public AuthorResponseModel AuthorView(int id);
+        bool Clear();
+        bool DeleteById(int id);
+        public IEnumerable<AuthorResponseModel> AuthourViewMultiple();
     }
 }

@@ -31,7 +31,8 @@ namespace LIB.Infrastructure.Services
             return query;
         }
 
-        public ICollection<Author> GetAll()
+        public IEnumerable<Author> GetAll()
+        
         {
             return _authorRepository.GetAll();
         }
@@ -48,9 +49,21 @@ namespace LIB.Infrastructure.Services
             return author; //can be mapped to domain here with a function such as MapDtoToDomain(author); --Dto = data table object = entity
         }
 
+        public bool DeleteById(int id)
+        {
+            bool result = _authorRepository.DeleteById(id);
+            _authorRepository.SaveChanges();
+            return result;
+        }
+
         public IEnumerable<Author> GetMultipleByIds(IEnumerable<int> ids)
         {
             return _authorRepository.GetMultipleById(ids);
+        }
+
+        public void SaveChanges()
+        {
+            _authorRepository.SaveChanges();
         }
 
 
@@ -59,6 +72,11 @@ namespace LIB.Infrastructure.Services
             return _authorRepository.Update(author);
         }
 
-        
+        public bool Clear()
+        {
+            bool result = _authorRepository.Clear();
+            _authorRepository.SaveChanges();
+            return result;
+        }
     }
 }

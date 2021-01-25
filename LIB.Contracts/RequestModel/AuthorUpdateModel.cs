@@ -14,6 +14,6 @@ namespace LIB.Contracts.RequestModel
         public string About { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public ICollection<int> Books { get; set; }
-        public Contact Contact { get; set; }
+        public ContactUpdateModel Contact { get; set; }
     }
 }

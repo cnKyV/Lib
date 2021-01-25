@@ -11,10 +11,13 @@ namespace LIB.Infrastructure.Interfaces
 {
     public interface IAuthorService 
     {
-        ICollection<Author> GetAll();
+        IEnumerable<Author> GetAll();
         Author GetById(int Id);
         Author Create(Author author);
         Author Update(Author author);
+        bool Clear();
+        bool DeleteById(int id);
         public IEnumerable<Author> GetMultipleByIds(IEnumerable<int> ids);
+        public void SaveChanges();
     }
 }

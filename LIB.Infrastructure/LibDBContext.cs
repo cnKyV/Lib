@@ -37,7 +37,7 @@ namespace LIB.Infrastructure
                     entityEntry.Property("DateCreated").CurrentValue = DateTime.Now;
                 }
             }
-
+        
             return base.SaveChanges();
         }
         public DbSet<Book> Books { get; set; }

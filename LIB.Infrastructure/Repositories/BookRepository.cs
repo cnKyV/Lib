@@ -41,7 +41,6 @@ namespace LIB.Infrastructure.Repositories
             try
             {
                 _libDbContext.Books.Add(book);
-                _libDbContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -53,11 +52,12 @@ namespace LIB.Infrastructure.Repositories
 
         public bool DeleteById(int id)
         {
-            var query = _libDbContext.Books.FirstOrDefault(i => i.Id == id);
+            var query = _libDbContext.Books.Include(i=>i.Authors).Include(i=>i.Editors).
+                Include(i=>i.Genres).Include(i=>i.Publishers).FirstOrDefault(i => i.Id == id);
+            
             try
             {
                 _libDbContext.Remove(query);
-                _libDbContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -69,12 +69,26 @@ namespace LIB.Infrastructure.Repositories
 
         public IEnumerable<Book> GetMultipleById(IEnumerable<int> ids)
         {
-            return  _libDbContext.Books.Where(i => ids.Contains(i.Id)).Select(i=>i).ToList();
+            return  _libDbContext.Books.Include(i=>i.Authors).Include(i=>i.Editors).
+                Include(i=>i.Genres).Include(i=>i.Publishers).Where(i => ids.Contains(i.Id)).Select(i=>i).ToList();
+        }
+
+        public void SaveChanges()
+        {
+            try
+            {
+                _libDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(ex, ex.Message);
+            }
         }
 
         public ICollection<Book> GetAll()
         {
-            var query = _libDbContext.Books.ToArray();
+            var query = _libDbContext.Books.Include(i=>i.Authors).Include(i=>i.Editors).
+                Include(i=>i.Genres).Include(i=>i.Publishers).ToArray();
             try
             {
                 return query;
@@ -88,7 +102,8 @@ namespace LIB.Infrastructure.Repositories
 
         public Book GetById(int id)
         {
-            var book = _libDbContext.Books.FirstOrDefault(i => i.Id == id);
+            var book = _libDbContext.Books.Include(i=>i.Authors).Include(i=>i.Editors).
+                Include(i=>i.Genres).Include(i=>i.Publishers).FirstOrDefault(i => i.Id == id);
             try
             {
                 return book;
@@ -102,7 +117,8 @@ namespace LIB.Infrastructure.Repositories
 
         public Book Update(Book book)
         {
-            var query = _libDbContext.Books.FirstOrDefault(i => i.Id == book.Id);
+            var query = _libDbContext.Books.Include(i=>i.Authors).Include(i=>i.Editors).
+                Include(i=>i.Genres).Include(i=>i.Publishers).FirstOrDefault(i => i.Id == book.Id);
             query.Name = book.Name;
             query.Description = book.Description;
             query.Edition = book.Edition;
@@ -123,5 +139,6 @@ namespace LIB.Infrastructure.Repositories
             }
             return query;
         }
+        
     }
 }
