@@ -13,9 +13,9 @@ namespace LIB.Contracts.ResponseModel
         public int Pages { get; set; }
         public string PdfSource { get; set; }
         public string Edition { get; set; }
-        public ICollection<AuthorBookResponseModel> AuthorsId { get; set; }
-        public ICollection<BookEditorResponseModel> EditorsId { get; set; }
-        public ICollection<BookPublisherResponseModel> PublishersId { get; set; }
-        public ICollection<BookGenreResponseModel> GenresId { get; set; }
+        public ICollection<AuthorBookResponseModel> Authors { get; set; }
+        public ICollection<BookEditorResponseModel> Editors { get; set; }
+        public ICollection<BookPublisherResponseModel> Publishers { get; set; }
+        public ICollection<BookGenreResponseModel> Genres { get; set; }
     }
 }
