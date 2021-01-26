@@ -30,13 +30,14 @@ namespace LIB.Domain.Requests
             _publisherService = publisherService;
             _genreService = genreService;
         }
-        public BookResponseModel CreateRequest(BookCreateModel author)
+        public BookResponseModel CreateRequest(BookCreateModel book)
         {
-            var result = _mapper.Map<Author>(author);
+            var result = _mapper.Map<Book>(book);
+            
             return null;
         }
 
-        public BookResponseModel UpdateRequest(BookCreateModel author)
+        public BookResponseModel UpdateRequest(BookCreateModel book)
         {
             throw new System.NotImplementedException();
         }

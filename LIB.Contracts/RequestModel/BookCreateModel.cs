@@ -16,6 +16,5 @@ namespace LIB.Contracts.RequestModel
         public ICollection<int> Editors { get; set; }
         public ICollection<int> Publishers { get; set; }
         public ICollection<int>Genres { get; set; }
-        public ICollection<int> Libraries { get; set; }
     }
 }

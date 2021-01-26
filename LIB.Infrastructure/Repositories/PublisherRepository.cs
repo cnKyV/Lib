@@ -66,6 +66,11 @@ namespace LIB.Infrastructure.Repositories
             return true;
         }
 
+        public IEnumerable<Publisher> GetMultipleById(IEnumerable<int> ids)
+        {
+            throw new NotImplementedException();
+        }
+
         public ICollection<Publisher> GetAll()
         {
             try

@@ -62,6 +62,11 @@ namespace LIB.Infrastructure.Repositories
             return true;
         }
 
+        public IEnumerable<Editor> GetMultipleById(IEnumerable<int> ids)
+        {
+            throw new NotImplementedException();
+        }
+
         public ICollection<Editor> GetAll()
         {
             var query = _libDbContext.Editors.ToArray();
