@@ -40,30 +40,54 @@ namespace LIB.Domain.Requests
 
             foreach (var author in qAuthors)
             {
-                AuthorBook _authorBook = new AuthorBook();
-                _authorBook.Author = author;
-                result.Authors.Add(_authorBook);
+                AuthorBook authorBook = new AuthorBook();
+                authorBook.Author = author;
+                result.Authors.Add(authorBook);
             }
             foreach (var editor in qEditors)
             {
-                BookEditor _bookEditor = new BookEditor();
-                _bookEditor.Editor = editor;
-                result.Editors.Add(_bookEditor);
+                BookEditor bookEditor = new BookEditor();
+                bookEditor.Editor = editor;
+                result.Editors.Add(bookEditor);
             }
 
             foreach (var genre in qGenres)
             {
-                BookGenre _bookGenre = new BookGenre();
-                _bookGenre.Genre = genre;
-                result.Genres.Add(_bookGenre);
+                BookGenre bookGenre = new BookGenre();
+                bookGenre.Genre = genre;
+                result.Genres.Add(bookGenre);
             }
 
             foreach (var publisher in qPublishers)
             {
-                BookPublisher _bookPublisher = new BookPublisher();
-                
+                BookPublisher bookPublisher = new BookPublisher();
+                bookPublisher.Publisher = publisher;
+                result.Publishers.Add(bookPublisher);
             }
-            return null;
+
+            _bookService.Create(result);
+            
+           var bookresponse = _mapper.Map<BookResponseModel>(result);
+           foreach (var author in result.Authors)
+           {
+               bookresponse.Authors.Add(author.Author.Id);
+           }           
+           foreach (var editor in result.Editors)
+           {
+               bookresponse.Editors.Add(editor.Editor.Id);
+           }
+
+           foreach (var genre in result.Genres)
+           {
+               bookresponse.Genres.Add(genre.Genre.Id);
+           }
+
+           foreach (var publisher in result.Publishers)
+           {
+               bookresponse.Publishers.Add(publisher.Publisher.Id);
+           }
+
+            return bookresponse;
         }
 
         public BookResponseModel UpdateRequest(BookCreateModel book)

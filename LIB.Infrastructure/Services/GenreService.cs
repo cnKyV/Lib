@@ -11,6 +11,12 @@ namespace LIB.Infrastructure.Services
 {
     public class GenreService : IGenreService
     {
+        private readonly IGenreRepository _genreRepository;
+
+        public GenreService(IGenreRepository genreRepository)
+        {
+            _genreRepository = genreRepository;
+        }
         public Genre Create(Genre author)
         {
             throw new NotImplementedException();
@@ -33,7 +39,7 @@ namespace LIB.Infrastructure.Services
 
         public IEnumerable<Genre> GetMultipleByIds(IEnumerable<int> ids)
         {
-            throw new NotImplementedException();
+            return _genreRepository.GetMultipleByIds(ids);
         }
     }
 }

@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LIB.Domain.Interfaces;
+using LIB.Domain.Requests;
 
 namespace LIB.API.Controllers
 {
@@ -12,10 +14,16 @@ namespace LIB.API.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
+        private readonly IBookRequest _bookRequest;
+
+        public BookController(IBookRequest bookRequest)
+        {
+            _bookRequest = bookRequest;
+        }
         [HttpPost]
         public IActionResult Create(BookCreateModel book)
         {
-            return Ok();
+            return Ok(_bookRequest.CreateRequest(book));
         }
         [HttpGet]
         public IActionResult GetAll()

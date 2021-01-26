@@ -64,7 +64,7 @@ namespace LIB.Infrastructure.Repositories
 
         public IEnumerable<Editor> GetMultipleByIds(IEnumerable<int> ids)
         {
-            throw new NotImplementedException();
+            return  _libDbContext.Editors.Where(i => ids.Contains(i.Id)).Select(i=>i).ToList();
         }
 
         public ICollection<Editor> GetAll()

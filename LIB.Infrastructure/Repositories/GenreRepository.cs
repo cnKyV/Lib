@@ -69,7 +69,7 @@ namespace LIB.Infrastructure.Repositories
 
         public IEnumerable<Genre> GetMultipleByIds(IEnumerable<int> ids)
         {
-            throw new NotImplementedException();
+            return  _libDbContext.Genres.Where(i => ids.Contains(i.Id)).Select(i=>i).ToList();
         }
 
         public ICollection<Genre> GetAll()

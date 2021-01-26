@@ -68,7 +68,7 @@ namespace LIB.Infrastructure.Repositories
 
         public IEnumerable<Publisher> GetMultipleByIds(IEnumerable<int> ids)
         {
-            throw new NotImplementedException();
+            return  _libDbContext.Publishers.Where(i => ids.Contains(i.Id)).Select(i=>i).ToList();
         }
 
         public ICollection<Publisher> GetAll()

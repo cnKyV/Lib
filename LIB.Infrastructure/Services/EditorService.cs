@@ -11,6 +11,12 @@ namespace LIB.Infrastructure.Services
 {
     public class EditorService : IEditorService
     {
+        private readonly IEditorRepository _editorRepository;
+
+        public EditorService(IEditorRepository editorRepository)
+        {
+            _editorRepository = editorRepository;
+        }
         public Editor Create(Editor author)
         {
             throw new NotImplementedException();
@@ -33,7 +39,7 @@ namespace LIB.Infrastructure.Services
 
         public IEnumerable<Editor> GetMultipleByIds(IEnumerable<int> ids)
         {
-            throw new NotImplementedException();
+            return _editorRepository.GetMultipleByIds(ids);
         }
     }
 }

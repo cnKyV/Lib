@@ -11,6 +11,12 @@ namespace LIB.Infrastructure.Services
 {
     public class PublisherService : IPublisherService
     {
+       
+        private readonly IPublisherRepository _publisherRepository;
+        public PublisherService(IPublisherRepository publisherRepository)
+        {
+            _publisherRepository = publisherRepository;
+        }
         public Publisher Create(Publisher author)
         {
             throw new NotImplementedException();
@@ -33,7 +39,7 @@ namespace LIB.Infrastructure.Services
 
         public IEnumerable<Publisher> GetMultipleByIds(IEnumerable<int> ids)
         {
-            throw new NotImplementedException();
+            return _publisherRepository.GetMultipleByIds(ids);
         }
     }
 }
