@@ -12,7 +12,7 @@ namespace LIB.Infrastructure.Interfaces
         Editor GetById(int Id);
         Editor Create(Editor author);
         Editor Update(Editor author);
-        public IEnumerable<Editor> GetMultipleById(IEnumerable<int> ids);
+        public IEnumerable<Editor> GetMultipleByIds(IEnumerable<int> ids);
 
     }
 }

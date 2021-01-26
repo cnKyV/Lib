@@ -33,7 +33,36 @@ namespace LIB.Domain.Requests
         public BookResponseModel CreateRequest(BookCreateModel book)
         {
             var result = _mapper.Map<Book>(book);
-            
+            var qAuthors = _authorService.GetMultipleByIds(book.Authors);
+            var qEditors = _editorService.GetMultipleByIds(book.Editors);
+            var qGenres= _genreService.GetMultipleByIds(book.Genres);
+            var qPublishers= _publisherService.GetMultipleByIds(book.Publishers);
+
+            foreach (var author in qAuthors)
+            {
+                AuthorBook _authorBook = new AuthorBook();
+                _authorBook.Author = author;
+                result.Authors.Add(_authorBook);
+            }
+            foreach (var editor in qEditors)
+            {
+                BookEditor _bookEditor = new BookEditor();
+                _bookEditor.Editor = editor;
+                result.Editors.Add(_bookEditor);
+            }
+
+            foreach (var genre in qGenres)
+            {
+                BookGenre _bookGenre = new BookGenre();
+                _bookGenre.Genre = genre;
+                result.Genres.Add(_bookGenre);
+            }
+
+            foreach (var publisher in qPublishers)
+            {
+                BookPublisher _bookPublisher = new BookPublisher();
+                
+            }
             return null;
         }
 

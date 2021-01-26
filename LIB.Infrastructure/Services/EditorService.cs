@@ -31,7 +31,7 @@ namespace LIB.Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Editor> GetMultipleById(IEnumerable<int> ids)
+        public IEnumerable<Editor> GetMultipleByIds(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }

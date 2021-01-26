@@ -13,7 +13,7 @@ namespace LIB.Infrastructure.Interfaces
         Publisher Update(Publisher TEntity);
         bool Clear();
         bool DeleteById(int id);
-        public IEnumerable<Publisher> GetMultipleById(IEnumerable<int> ids);
+        public IEnumerable<Publisher> GetMultipleByIds(IEnumerable<int> ids);
 
     }
 }

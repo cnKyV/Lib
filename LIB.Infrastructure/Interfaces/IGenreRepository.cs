@@ -13,7 +13,7 @@ namespace LIB.Infrastructure.Interfaces
         Genre Update(Genre TEntity);
         bool Clear();
         bool DeleteById(int id);
-        public IEnumerable<Genre> GetMultipleById(IEnumerable<int> ids);
+        public IEnumerable<Genre> GetMultipleByIds(IEnumerable<int> ids);
 
     }
 }

@@ -14,7 +14,7 @@ namespace LIB.Infrastructure.Interfaces
         Publisher GetById(int Id);
         Publisher Create(Publisher author);
         Publisher Update(Publisher author);
-        public IEnumerable<Publisher> GetMultipleById(IEnumerable<int> ids);
+        public IEnumerable<Publisher> GetMultipleByIds(IEnumerable<int> ids);
 
     }
 }

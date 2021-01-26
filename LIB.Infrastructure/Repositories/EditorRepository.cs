@@ -62,7 +62,7 @@ namespace LIB.Infrastructure.Repositories
             return true;
         }
 
-        public IEnumerable<Editor> GetMultipleById(IEnumerable<int> ids)
+        public IEnumerable<Editor> GetMultipleByIds(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }

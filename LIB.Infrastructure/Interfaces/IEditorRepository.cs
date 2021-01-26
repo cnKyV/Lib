@@ -13,7 +13,7 @@ namespace LIB.Infrastructure.Interfaces
         Editor Update(Editor TEntity);
         bool Clear();
         bool DeleteById(int id);
-        public IEnumerable<Editor> GetMultipleById(IEnumerable<int> ids);
+        public IEnumerable<Editor> GetMultipleByIds(IEnumerable<int> ids);
 
     }
 }
