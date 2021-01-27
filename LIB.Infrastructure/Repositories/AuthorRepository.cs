@@ -59,12 +59,12 @@ namespace LIB.Infrastructure.Repositories
 
         public ICollection<Author> GetAll()
         {
-            return _libDbContext.Authors.Include(i=>i.Books).ToArray();
+            return _libDbContext.Authors.Include(i=>i.Books).ThenInclude(i=>i.Book).Include(i=>i.Contact).ToArray();
         }
 
         public Author GetById(int id)
         {
-            return _libDbContext.Authors.Include(i=>i.Books).FirstOrDefault(i => i.Id == id);
+            return _libDbContext.Authors.Include(i=>i.Books).ThenInclude(i=>i.Book).Include(i=>i.Contact).FirstOrDefault(i => i.Id == id);
         }
 
         public IEnumerable<Author> GetMultipleById(IEnumerable<int> ids)

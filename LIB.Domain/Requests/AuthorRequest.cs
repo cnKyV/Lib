@@ -46,10 +46,10 @@ namespace LIB.Domain.Requests
             // }
             _authorService.Create(query);
             var response = _mapper.Map<AuthorResponseModel>(query);
-            foreach (var books in query.Books)
-            {
-                response.Books.Add(books.Book.Id);
-            }
+            // foreach (var books in query.Books)
+            // {
+            //     response.Books.Add(books.Book.Id);
+            // }
             return response;
         }
         
@@ -102,6 +102,8 @@ namespace LIB.Domain.Requests
             var result = _mapper.Map<IEnumerable<AuthorResponseModel>>(_authorService.GetAll());
             return result;
         }
+        
+        
     }
 }
 

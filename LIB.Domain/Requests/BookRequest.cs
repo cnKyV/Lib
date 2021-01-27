@@ -97,7 +97,7 @@ namespace LIB.Domain.Requests
 
         public BookResponseModel BookView(int id)
         {
-            throw new System.NotImplementedException();
+            return _mapper.Map<BookResponseModel>(_bookService.GetById(id));
         }
         
 
@@ -113,7 +113,8 @@ namespace LIB.Domain.Requests
 
         public IEnumerable<BookResponseModel> BookViewMultiple()
         {
-            throw new System.NotImplementedException();
+            return null;
+            //_mapper.Map<>()
         }
         
     }

@@ -12,13 +12,17 @@ namespace LIB.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<Author, AuthorResponseModel>()
-                .ForMember(model => model.Books, entity=> entity.MapFrom(i => new List<int>()));
+            CreateMap<Author, AuthorResponseModel>();
+                //.ForMember(model => model.Books, entity=> entity.MapFrom(i => new List<int>()));
             CreateMap<AuthorCreateModel, Author>()
                 .ForMember(entity => entity.Books, model => model.MapFrom(i => new List<AuthorBook>())); 
             CreateMap<AuthorUpdateModel, Author>()
                 .ForMember(entity => entity.Books, model => model.MapFrom(i => new List<AuthorBook>()));
             CreateMap<ContactCreateModel, Contact>();
+            
+            CreateMap<AuthorBook, AuthorBookResponseModel>()
+                .ForMember(model => model.AuthorId, entity => entity.MapFrom(i => i.Author.Id))
+                .ForMember(model => model.BookId, entity => entity.MapFrom(i => i.Book.Id));
             //Book
             CreateMap<BookCreateModel, Book>()
                 .ForMember(entity => entity.Authors, model => model.MapFrom(i => new List<AuthorBook>()))
