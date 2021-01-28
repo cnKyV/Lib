@@ -1,13 +1,13 @@
 ﻿using LIB.Contracts.Shared;
-using LIB.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace LIB.Contracts.RequestModel
 {
-    public class EditorCreateRequestModel : ICreateModel
+    public class EditorUpdateModel : IUpdateModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string About { get; set; }

@@ -12,6 +12,7 @@ namespace LIB.Mapping
     {
         public MappingProfile()
         {
+            //Author
             CreateMap<Author, AuthorResponseModel>();
                 //.ForMember(model => model.Books, entity=> entity.MapFrom(i => new List<int>()));
             CreateMap<AuthorCreateModel, Author>()
@@ -20,9 +21,6 @@ namespace LIB.Mapping
                 .ForMember(entity => entity.Books, model => model.MapFrom(i => new List<AuthorBook>()));
             CreateMap<ContactCreateModel, Contact>();
             
-            CreateMap<AuthorBook, AuthorBookResponseModel>()
-                .ForMember(model => model.AuthorId, entity => entity.MapFrom(i => i.Author.Id))
-                .ForMember(model => model.BookId, entity => entity.MapFrom(i => i.Book.Id));
             //Book
             CreateMap<BookCreateModel, Book>()
                 .ForMember(entity => entity.Authors, model => model.MapFrom(i => new List<AuthorBook>()))
@@ -34,14 +32,35 @@ namespace LIB.Mapping
                 .ForMember(entity => entity.Genres, model => model.MapFrom(i => new List<BookGenre>()))
                 .ForMember(entity => entity.Editors, model => model.MapFrom(i => new List<BookEditor>()))
                 .ForMember(entity => entity.Publishers, model => model.MapFrom(i => new List<BookPublisher>()));
-            CreateMap<Book, BookResponseModel>()
-                .ForMember(model => model.Authors, entity => entity.MapFrom(i => new List<int>()))
-                .ForMember(model => model.Genres, entity => entity.MapFrom(i => new List<int>()))
-                .ForMember(model => model.Editors, entity => entity.MapFrom(i => new List<int>()))
-                .ForMember(model => model.Publishers, entity => entity.MapFrom(i => new List<int>()));
+            CreateMap<Book, BookResponseModel>();
 
+            //Editor
+            CreateMap<EditorCreateModel, Editor>()
+                .ForMember(i => i.Books, k => k.MapFrom(j => new List<BookEditor>()))
+                .ForMember(i => i.Publishers, k => k.MapFrom(j => new List<EditorPublisher>()));
+            CreateMap<EditorUpdateModel, Editor>()
+                .ForMember(i => i.Books, k => k.MapFrom(j => new List<BookEditor>()))
+                .ForMember(i => i.Publishers, k => k.MapFrom(j => new List<EditorPublisher>()));
+            CreateMap<Editor, EditorResponseModel>();
+            //Shared
+            CreateMap<AuthorBook, AuthorBookResponseModel>()
+                .ForMember(model => model.AuthorId, entity => entity.MapFrom(i => i.Author.Id))
+                .ForMember(model => model.BookId, entity => entity.MapFrom(i => i.Book.Id));
+            CreateMap<BookEditor, BookEditorResponseModel>()
+                .ForMember(model => model.BookId, entity => entity.MapFrom(i => i.Book.Id))
+                .ForMember(model => model.EditorId, entity => entity.MapFrom(i => i.Editor.Id));
 
+            CreateMap<BookGenre, BookGenreResponseModel>()
+                .ForMember(model => model.BookId, entity => entity.MapFrom(i => i.Book.Id))
+                .ForMember(model => model.GenreId, entity => entity.MapFrom(i => i.Genre.Id));
+            CreateMap<BookPublisher, BookPublisherResponseModel>()
+                .ForMember(model => model.BookId, entity => entity.MapFrom(i => i.Book.Id))
+                .ForMember(model => model.PublisherId, entity => entity.MapFrom(i => i.Publisher.Id));
 
+            CreateMap<EditorPublisher, EditorPublisherResponseModel>()
+                .ForMember(m => m.EditorId, e => e.MapFrom(i => i.Editor.Id))
+                .ForMember(m => m.PublisherId, e => e.MapFrom(i => i.Publisher.Id));
+            
 
 
             //<model,entity> .ForMember(entity => entity.Books, model => model.MapFrom(i => new List<AuthorBook>()));

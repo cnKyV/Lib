@@ -128,15 +128,6 @@ namespace LIB.Infrastructure.Repositories
             query.Editors = book.Editors;
             query.Genres = book.Genres;
             query.Publishers = book.Publishers;
-            try
-            {
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
             return query;
         }
         

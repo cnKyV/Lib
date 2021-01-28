@@ -22,7 +22,6 @@ namespace LIB.Infrastructure.Repositories
             try
             {
                 _libDbContext.Contacts.RemoveRange(_libDbContext.Contacts);
-                _libDbContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -36,18 +35,8 @@ namespace LIB.Infrastructure.Repositories
 
         public Contact Create(Contact contact)
         {
-            try
-            {
-                _libDbContext.Contacts.Add(contact);
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
-            _logger.LogInformation($"Contact with ID: {contact.Id} has been succesfully created.");
-            return contact;
+            _libDbContext.Contacts.Add(contact);
+                return contact;
         }
 
         public bool DeleteById(int id)
@@ -56,7 +45,6 @@ namespace LIB.Infrastructure.Repositories
             try
             {
                 _libDbContext.Contacts.Remove(contact);
-                _libDbContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -69,16 +57,7 @@ namespace LIB.Infrastructure.Repositories
 
         public ICollection<Contact> GetAll()
         {
-            try
-            {
-                return _libDbContext.Contacts.ToArray();
-            }
-            catch (Exception ex)
-            {
-
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
+            return _libDbContext.Contacts.ToArray();
         }
 
         public Contact GetById(int id)

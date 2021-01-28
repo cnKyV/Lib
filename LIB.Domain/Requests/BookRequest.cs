@@ -67,32 +67,46 @@ namespace LIB.Domain.Requests
 
             _bookService.Create(result);
             
-           var bookresponse = _mapper.Map<BookResponseModel>(result);
-           foreach (var author in result.Authors)
-           {
-               bookresponse.Authors.Add(author.Author.Id);
-           }           
-           foreach (var editor in result.Editors)
-           {
-               bookresponse.Editors.Add(editor.Editor.Id);
-           }
-
-           foreach (var genre in result.Genres)
-           {
-               bookresponse.Genres.Add(genre.Genre.Id);
-           }
-
-           foreach (var publisher in result.Publishers)
-           {
-               bookresponse.Publishers.Add(publisher.Publisher.Id);
-           }
-
-            return bookresponse;
+            
+           return _mapper.Map<BookResponseModel>(result);
         }
 
-        public BookResponseModel UpdateRequest(BookCreateModel book)
+        public BookResponseModel UpdateRequest(BookUpdateModel book)
         {
-            throw new System.NotImplementedException();
+            var result = _mapper.Map<Book>(book);
+            var qAuthors = _authorService.GetMultipleByIds(book.Authors);
+            var qEditors = _editorService.GetMultipleByIds(book.Editors);
+            var qGenres= _genreService.GetMultipleByIds(book.Genres);
+            var qPublishers= _publisherService.GetMultipleByIds(book.Publishers);
+
+            foreach (var author in qAuthors)
+            {
+                AuthorBook authorBook = new AuthorBook();
+                authorBook.Author = author;
+                result.Authors.Add(authorBook);
+            }
+            foreach (var editor in qEditors)
+            {
+                BookEditor bookEditor = new BookEditor();
+                bookEditor.Editor = editor;
+                result.Editors.Add(bookEditor);
+            }
+
+            foreach (var genre in qGenres)
+            {
+                BookGenre bookGenre = new BookGenre();
+                bookGenre.Genre = genre;
+                result.Genres.Add(bookGenre);
+            }
+
+            foreach (var publisher in qPublishers)
+            {
+                BookPublisher bookPublisher = new BookPublisher();
+                bookPublisher.Publisher = publisher;
+                result.Publishers.Add(bookPublisher);
+            }
+            _bookService.Update(result);
+            return _mapper.Map<BookResponseModel>(result);
         }
 
         public BookResponseModel BookView(int id)
@@ -113,7 +127,7 @@ namespace LIB.Domain.Requests
 
         public IEnumerable<BookResponseModel> BookViewMultiple()
         {
-            return null;
+            return _mapper.Map<IEnumerable<BookResponseModel>>(_bookService.GetAll());
             //_mapper.Map<>()
         }
         

@@ -38,7 +38,7 @@ namespace LIB.API.Controllers
         [HttpPatch]
         public IActionResult Update(BookUpdateModel book)
         {
-            return Ok();
+            return Ok(_bookRequest.UpdateRequest(book));
         }
         [HttpDelete]
         public IActionResult Clear()

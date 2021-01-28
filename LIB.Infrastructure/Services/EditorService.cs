@@ -17,24 +17,26 @@ namespace LIB.Infrastructure.Services
         {
             _editorRepository = editorRepository;
         }
-        public Editor Create(Editor author)
+        public Editor Create(Editor editor)
         {
-            throw new NotImplementedException();
+            var result =_editorRepository.Create(editor);
+            _editorRepository.SaveChanges();
+            return result;
         }
 
         public ICollection<Editor> GetAll()
         {
-            throw new NotImplementedException();
+            return _editorRepository.GetAll();
         }
 
         public Editor GetById(int Id)
         {
-            throw new NotImplementedException();
+            return _editorRepository.GetById(Id);
         }
 
-        public Editor Update(Editor author)
+        public Editor Update(Editor editor)
         {
-            throw new NotImplementedException();
+            return _editorRepository.Update(editor);
         }
 
         public IEnumerable<Editor> GetMultipleByIds(IEnumerable<int> ids)

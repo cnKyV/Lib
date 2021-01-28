@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace LIB.Infrastructure.Repositories
 {
@@ -34,22 +35,13 @@ namespace LIB.Infrastructure.Repositories
 
         public Editor Create(Editor editor)
         {
-            try
-            {
-                _libDbContext.Editors.Add(editor);
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex,ex.Message);
-                return null;
-            }
-            return editor;
+           _libDbContext.Editors.Add(editor);
+           return editor;
         }
 
         public bool DeleteById(int id)
         {
-            var query = _libDbContext.Editors.FirstOrDefault(i => i.Id == id);
+            var query = _libDbContext.Editors.Include(i=>i.Books).Include(i=>i.Publishers).FirstOrDefault(i => i.Id == id);
             try
             {
                 _libDbContext.Editors.Remove(query);
@@ -67,53 +59,40 @@ namespace LIB.Infrastructure.Repositories
             return  _libDbContext.Editors.Where(i => ids.Contains(i.Id)).Select(i=>i).ToList();
         }
 
-        public ICollection<Editor> GetAll()
+        public void SaveChanges()
         {
-            var query = _libDbContext.Editors.ToArray();
             try
             {
-                return query;
+                _libDbContext.SaveChanges();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                _logger.LogError(ex, ex.Message);
-                return null;
+                _logger.LogInformation(e,e.Message);
             }
+            
+        }
+
+        public ICollection<Editor> GetAll()
+        {
+          return _libDbContext.Editors.Include(i=>i.Books).Include(i=>i.Publishers).ToArray();
         }
 
         public Editor GetById(int id)
         {
-            var query = _libDbContext.Editors.FirstOrDefault(i => i.Id == id);
-            try
-            {
-                return query;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
+            return _libDbContext.Editors.Include(i=>i.Books).Include(i=>i.Publishers).FirstOrDefault(i => i.Id == id);
         }
 
         public Editor Update(Editor editor)
         {
-            var query = _libDbContext.Editors.FirstOrDefault(i => i.Id == editor.Id);
+            var query = _libDbContext.Editors.Include(i=>i.Books).Include(i=>i.Publishers).FirstOrDefault(i => i.Id == editor.Id);
             query.Name = editor.Name;
             query.Surname = editor.Surname;
             query.Contact = editor.Contact;
             query.About = editor.About;
             query.Publishers = editor.Publishers;
+            query.Books = editor.Books;
             query.DateOfBirth = editor.DateOfBirth;
-            try
-            {
-                _libDbContext.SaveChanges();
-                return query;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
+            return query;
         }
     }
 }
