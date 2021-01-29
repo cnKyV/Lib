@@ -13,6 +13,7 @@ namespace LIB.Infrastructure.Interfaces
         Editor Create(Editor author);
         Editor Update(Editor author);
         public IEnumerable<Editor> GetMultipleByIds(IEnumerable<int> ids);
+        bool DeleteById(int id);
 
     }
 }

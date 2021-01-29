@@ -27,7 +27,7 @@ namespace LIB.Infrastructure.Services
         public Author Create(Author author)
         {
             var query = _authorRepository.Create(author);
-            _authorRepository.SaveChanges();
+           SaveChanges();
             return query;
         }
 
@@ -52,7 +52,7 @@ namespace LIB.Infrastructure.Services
         public bool DeleteById(int id)
         {
             bool result = _authorRepository.DeleteById(id);
-            _authorRepository.SaveChanges();
+            SaveChanges();
             return result;
         }
 
@@ -60,23 +60,24 @@ namespace LIB.Infrastructure.Services
         {
             return _authorRepository.GetMultipleById(ids);
         }
-
-        public void SaveChanges()
-        {
-            _authorRepository.SaveChanges();
-        }
-
-
+        
         public Author Update(Author author)
         {
-            return _authorRepository.Update(author);
+            var result =  _authorRepository.Update(author);
+            SaveChanges();
+            return result;
         }
 
         public bool Clear()
         {
             bool result = _authorRepository.Clear();
-            _authorRepository.SaveChanges();
+           SaveChanges();
             return result;
+        }
+        
+        public void SaveChanges()
+        {
+            _authorRepository.SaveChanges();
         }
     }
 }

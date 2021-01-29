@@ -41,7 +41,7 @@ namespace LIB.Infrastructure.Repositories
 
         public bool DeleteById(int id)
         {
-            var query = _libDbContext.Editors.Include(i=>i.Books).Include(i=>i.Publishers).FirstOrDefault(i => i.Id == id);
+            var query = _libDbContext.Editors.Include(i=>i.Books).Include(i=>i.Publishers).Include(i=>i.Contact).FirstOrDefault(i => i.Id == id);
             try
             {
                 _libDbContext.Editors.Remove(query);
@@ -74,17 +74,17 @@ namespace LIB.Infrastructure.Repositories
 
         public ICollection<Editor> GetAll()
         {
-          return _libDbContext.Editors.Include(i=>i.Books).Include(i=>i.Publishers).ToArray();
+          return _libDbContext.Editors.Include(i=>i.Books).Include(i=>i.Publishers).Include(i=>i.Contact).ToArray();
         }
 
         public Editor GetById(int id)
         {
-            return _libDbContext.Editors.Include(i=>i.Books).Include(i=>i.Publishers).FirstOrDefault(i => i.Id == id);
+            return _libDbContext.Editors.Include(i=>i.Books).Include(i=>i.Publishers).Include(i=>i.Contact).FirstOrDefault(i => i.Id == id);
         }
 
         public Editor Update(Editor editor)
         {
-            var query = _libDbContext.Editors.Include(i=>i.Books).Include(i=>i.Publishers).FirstOrDefault(i => i.Id == editor.Id);
+            var query = _libDbContext.Editors.Include(i=>i.Books).Include(i=>i.Publishers).Include(i=>i.Contact).FirstOrDefault(i => i.Id == editor.Id);
             query.Name = editor.Name;
             query.Surname = editor.Surname;
             query.Contact = editor.Contact;

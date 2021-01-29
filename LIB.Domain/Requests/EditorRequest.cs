@@ -27,38 +27,22 @@ namespace LIB.Domain.Requests
         public EditorResponseModel CreateRequest(EditorCreateModel editor)
         {
             var tbcEditor = _mapper.Map<Editor>(editor);
-
-            
-            var eBook = _bookService.GetMultipleByIds(editor.Books);
-            var ePublisher = _publisherService.GetMultipleByIds(editor.Publishers);
-            foreach (var book in eBook)
-            {
-                var moq = new BookEditor();
-                moq.Book = book;
-                tbcEditor.Books.Add(moq);
-            }
-            foreach (var publisher in ePublisher)
-            {
-                var moq = new EditorPublisher();
-                moq.Publisher = publisher;
-                tbcEditor.Publishers.Add(moq);
-            }
-            
-
+            Populate(editor,tbcEditor);
             _editorService.Create(tbcEditor);
-
             return _mapper.Map<EditorResponseModel>(tbcEditor);
-
         }
 
         public EditorResponseModel UpdateRequest(EditorUpdateModel editor)
         {
-            throw new System.NotImplementedException();
+           var tbcEditor = _mapper.Map<Editor>(editor);
+           Populate(editor,tbcEditor);
+           _editorService.Update(tbcEditor);
+           return _mapper.Map<EditorResponseModel>(tbcEditor);
         }
 
-        public EditorResponseModel AuthorView(int id)
+        public EditorResponseModel EditorView(int id)
         {
-            throw new System.NotImplementedException();
+            return _mapper.Map<EditorResponseModel>(_editorService.GetById(id));
         }
 
         public bool Clear()
@@ -68,12 +52,43 @@ namespace LIB.Domain.Requests
 
         public bool DeleteById(int id)
         {
-            throw new System.NotImplementedException();
+            return _editorService.DeleteById(id);
         }
 
-        public IEnumerable<EditorResponseModel> AuthourViewMultiple()
+        public IEnumerable<EditorResponseModel> EditorViewMultiple()
         {
-            throw new System.NotImplementedException();
+            return _mapper.Map<IEnumerable<EditorResponseModel>>(_editorService.GetAll());
+        }
+
+        void Populate(EditorCreateModel editor, Editor tbcEditor)
+        {
+            var eBook = _bookService.GetMultipleByIds(editor.Books);
+            var ePublisher = _publisherService.GetMultipleByIds(editor.Publishers);
+            foreach (var book in eBook)
+            {
+                var moq = new BookEditor {Book = book};
+                tbcEditor.Books.Add(moq);
+            }
+            foreach (var publisher in ePublisher)
+            {
+                var moq = new EditorPublisher {Publisher = publisher};
+                tbcEditor.Publishers.Add(moq);
+            }
+        }        
+        void Populate(EditorUpdateModel editor, Editor tbcEditor)
+        {
+            var eBook = _bookService.GetMultipleByIds(editor.Books);
+            var ePublisher = _publisherService.GetMultipleByIds(editor.Publishers);
+            foreach (var book in eBook)
+            {
+                var moq = new BookEditor {Book = book};
+                tbcEditor.Books.Add(moq);
+            }
+            foreach (var publisher in ePublisher)
+            {
+                var moq = new EditorPublisher {Publisher = publisher};
+                tbcEditor.Publishers.Add(moq);
+            }
         }
     }
 }

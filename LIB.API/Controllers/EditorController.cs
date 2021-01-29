@@ -20,5 +20,29 @@ namespace LIB.API.Controllers
         {
             return Ok(_editorRequest.CreateRequest(editorCreateModel));
         }
+
+        [HttpPut]
+        public IActionResult Update(EditorUpdateModel editorUpdateModel)
+        {
+            return Ok(_editorRequest.UpdateRequest(editorUpdateModel));
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteById(int id)
+        {
+            return Ok(_editorRequest.DeleteById(id));
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok(_editorRequest.EditorViewMultiple());
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            return Ok(_editorRequest.EditorView(id));
+        }
     }
 }

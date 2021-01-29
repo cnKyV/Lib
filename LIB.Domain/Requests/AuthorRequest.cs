@@ -71,7 +71,6 @@ namespace LIB.Domain.Requests
             // dbAuthor.DateOfBirth = query.DateOfBirth;
             // dbAuthor.Books = query.Books;
             _authorService.Update(query);
-            _authorService.SaveChanges();
             var model = _mapper.Map<AuthorResponseModel>(query);
             return model;
         }

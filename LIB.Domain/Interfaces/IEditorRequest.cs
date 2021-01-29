@@ -8,9 +8,9 @@ namespace LIB.Domain.Interfaces
     {
         public  EditorResponseModel CreateRequest(EditorCreateModel editor);
         public EditorResponseModel UpdateRequest(EditorUpdateModel editor);
-        public EditorResponseModel  AuthorView(int id);
+        public EditorResponseModel  EditorView(int id);
         bool Clear();
         bool DeleteById(int id);
-        public IEnumerable<EditorResponseModel> AuthourViewMultiple();
+        public IEnumerable<EditorResponseModel> EditorViewMultiple();
     }
 }
