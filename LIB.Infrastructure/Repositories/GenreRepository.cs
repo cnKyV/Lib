@@ -37,16 +37,7 @@ namespace LIB.Infrastructure.Repositories
 
         public Genre Create(Genre genre)
         {
-            try
-            {
-                _libDbContext.Genres.Add(genre);
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
+            _libDbContext.Genres.Add(genre);
             return genre;
         }
 
@@ -56,14 +47,12 @@ namespace LIB.Infrastructure.Repositories
             try
             {
                 _libDbContext.Genres.Remove(result);
-                _libDbContext.SaveChanges();
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
                 return false;
             }
-            _logger.LogInformation($"Record with {id} ID has been removed succesfully by {Environment.UserName} / {Environment.UserDomainName}");
             return true;
         }
 
@@ -72,50 +61,26 @@ namespace LIB.Infrastructure.Repositories
             return  _libDbContext.Genres.Where(i => ids.Contains(i.Id)).Select(i=>i).ToList();
         }
 
+        public void SaveChanges()
+        {
+            _libDbContext.SaveChanges();
+        }
+
         public ICollection<Genre> GetAll()
         {
-            try
-            {
-                return _libDbContext.Genres.ToArray();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
+            return _libDbContext.Genres.ToArray();
         }
 
         public Genre GetById(int id)
         {
-            var result = _libDbContext.Genres.FirstOrDefault(i => i.Id == id);
-            try
-            {
-                return result;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
-
-
+            return _libDbContext.Genres.FirstOrDefault(i => i.Id == id);
         }
 
         public Genre Update(Genre genre)
         {
             var result = _libDbContext.Genres.FirstOrDefault(i=> i.Id == genre.Id);
-
             result.Name = genre.Name;
             result.Books = genre.Books;
-            try
-            {
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
             return result;
         }
     }

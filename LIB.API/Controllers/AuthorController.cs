@@ -42,7 +42,7 @@ namespace LIB.API.Controllers
         [HttpPut]
         public IActionResult Update(AuthorUpdateModel author)
         {
-            return Ok(_authorRequest.UpdateRequest((author)));
+            return Ok(_authorRequest.UpdateRequest(author));
         }
         [HttpDelete]
         public IActionResult Clear()

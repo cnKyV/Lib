@@ -17,24 +17,24 @@ namespace LIB.Infrastructure.Services
         {
             _genreRepository = genreRepository;
         }
-        public Genre Create(Genre author)
+        public Genre Create(Genre genre)
         {
-            throw new NotImplementedException();
+            return genre is null ? null : _genreRepository.Create(genre);
         }
 
         public ICollection<Genre> GetAll()
         {
-            throw new NotImplementedException();
+            return _genreRepository.GetAll();
         }
 
-        public Genre GetById(int Id)
+        public Genre GetById(int id)
         {
-            throw new NotImplementedException();
+            return _genreRepository.GetById(id) is null ? null : _genreRepository.GetById(id);
         }
 
-        public Genre Update(Genre author)
+        public Genre Update(Genre genre)
         {
-            throw new NotImplementedException();
+            return genre is null ? null : _genreRepository.Update(genre);
         }
 
         public IEnumerable<Genre> GetMultipleByIds(IEnumerable<int> ids)

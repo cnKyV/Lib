@@ -28,12 +28,12 @@ namespace LIB.API.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok();
+            return Ok(_bookRequest.BookViewMultiple());
         }
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok();
+            return Ok(_bookRequest.BookView(id));
         }
         [HttpPut]
         public IActionResult Update(BookUpdateModel book)
@@ -48,7 +48,7 @@ namespace LIB.API.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteById(int id)
         {
-            return Ok();
+            return Ok(_bookRequest.DeleteById(id));
         }
     }
 }

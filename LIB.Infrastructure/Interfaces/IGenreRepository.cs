@@ -14,6 +14,7 @@ namespace LIB.Infrastructure.Interfaces
         bool Clear();
         bool DeleteById(int id);
         public IEnumerable<Genre> GetMultipleByIds(IEnumerable<int> ids);
+        void SaveChanges();
 
     }
 }

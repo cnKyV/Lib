@@ -5,9 +5,8 @@ using System.Text;
 
 namespace LIB.Contracts.RequestModel
 {
-    public class GenreUpdateRequestModel : IUpdateModel
+    public class GenreCreateModel : ICreateModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<int> Books { get; set; }
     }
