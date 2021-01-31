@@ -13,16 +13,27 @@ namespace LIB.Domain.Requests
     {
         private readonly IGenreService _genreService;
         private readonly IMapper _mapper;
+        private readonly IBookService _bookService;
 
-        public GenreRequest(IGenreService genreService, IMapper mapper)
+        public GenreRequest(IGenreService genreService, IMapper mapper, IBookService bookService)
         {
             _genreService = genreService;
             _mapper = mapper;
+            _bookService = bookService;
         }
         public GenreResponseModel CreateRequest(GenreCreateModel genre)
         {
-            _mapper.Map<Genre>(genre);
-            return null;
+           var mGenre = _mapper.Map<Genre>(genre);
+           var books = _bookService.GetMultipleByIds(genre.Books);
+           foreach (var book in books)
+           {
+               var moq = new BookGenre();
+               moq.Book = book;
+               mGenre.Books.Add(moq);
+           }
+           _genreService.Create(mGenre);
+           
+           return _mapper.Map<GenreResponseModel>(mGenre);
         }
 
         public GenreResponseModel UpdateRequest(GenreUpdateModel genre)
