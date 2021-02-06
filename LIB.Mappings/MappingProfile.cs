@@ -46,7 +46,7 @@ namespace LIB.Mapping
             
             //Genre
             CreateMap<GenreCreateModel, Genre>()
-                .ForMember(i => i.Books, j => j.MapFrom(k => new BookGenre()));
+                .ForMember(i => i.Books, j => j.MapFrom(k => new List<BookGenre>()));
             CreateMap<Genre, GenreResponseModel>();
             //Shared
             CreateMap<AuthorBook, AuthorBookResponseModel>()

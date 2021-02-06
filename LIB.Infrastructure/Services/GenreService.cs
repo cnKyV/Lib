@@ -19,7 +19,9 @@ namespace LIB.Infrastructure.Services
         }
         public Genre Create(Genre genre)
         {
-            return genre is null ? null : _genreRepository.Create(genre);
+            var result = _genreRepository.Create(genre);        
+            _genreRepository.SaveChanges();
+            return result;
         }
 
         public ICollection<Genre> GetAll()
