@@ -6,6 +6,7 @@ using LIB.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Serilog;
 
 namespace LIB.Infrastructure.Services
 {
@@ -36,7 +37,14 @@ namespace LIB.Infrastructure.Services
 
         public Genre Update(Genre genre)
         {
-            return genre is null ? null : _genreRepository.Update(genre);
+            var result = _genreRepository.Update(genre);
+            if (result is null)
+            {
+                Log.Information($"Genre with Id:{genre.Id} does not exist");
+                return null;
+            }
+            _genreRepository.SaveChanges();
+            return result;
         }
 
         public IEnumerable<Genre> GetMultipleByIds(IEnumerable<int> ids)
