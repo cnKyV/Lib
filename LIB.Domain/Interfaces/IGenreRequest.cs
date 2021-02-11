@@ -11,6 +11,6 @@ namespace LIB.Domain.Interfaces
         public GenreResponseModel GenreView(int id);
         bool Clear();
         bool DeleteById(int id);
-        public IEnumerable<GenreResponseModel> GenreViewMultiple();
+        public IEnumerable<GenreResponseModel> GenreView();
     }
 }

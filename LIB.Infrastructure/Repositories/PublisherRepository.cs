@@ -36,17 +36,8 @@ namespace LIB.Infrastructure.Repositories
 
         public Publisher Create(Publisher publisher)
         {
-            try
-            {
-                _libDbContext.Publishers.Add(publisher);
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
-            return publisher;
+            _libDbContext.Publishers.Add(publisher);
+                return publisher;
         }
 
         public bool DeleteById(int id)
@@ -73,29 +64,12 @@ namespace LIB.Infrastructure.Repositories
 
         public ICollection<Publisher> GetAll()
         {
-            try
-            {
-                return _libDbContext.Publishers.ToArray();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
+            return _libDbContext.Publishers.ToArray();
         }
 
         public Publisher GetById(int id)
         {
-            var result = _libDbContext.Publishers.FirstOrDefault(i => i.Id == id);
-            try
-            {
-                return result;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
+           return _libDbContext.Publishers.FirstOrDefault(i => i.Id == id);
         }
 
         public Publisher Update(Publisher publisher)

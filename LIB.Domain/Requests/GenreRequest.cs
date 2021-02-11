@@ -38,12 +38,27 @@ namespace LIB.Domain.Requests
 
         public GenreResponseModel UpdateRequest(GenreUpdateModel genre)
         {
-            throw new System.NotImplementedException();
+            var mGenre = _mapper.Map<Genre>(genre);
+            var books = _bookService.GetMultipleByIds(genre.Books);
+            foreach (var book in books)
+            {
+                var moq = new BookGenre();
+                moq.Book = book;
+                mGenre.Books.Add(moq);
+            }
+
+            _genreService.Update(mGenre);
+
+            return _mapper.Map<GenreResponseModel>(mGenre);
+
         }
 
         public GenreResponseModel GenreView(int id)
         {
-            throw new System.NotImplementedException();
+            return _mapper.Map<GenreResponseModel>(_genreService.GetById(id));
+        }        public IEnumerable<GenreResponseModel> GenreView()
+        {
+            return _mapper.Map<IEnumerable<GenreResponseModel>>(_genreService.GetAll());
         }
 
         public bool Clear()
@@ -53,12 +68,8 @@ namespace LIB.Domain.Requests
 
         public bool DeleteById(int id)
         {
-            throw new System.NotImplementedException();
+            return _genreService.DeleteById(id);
         }
-
-        public IEnumerable<GenreResponseModel> GenreViewMultiple()
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }

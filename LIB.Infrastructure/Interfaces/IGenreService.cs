@@ -14,6 +14,7 @@ namespace LIB.Infrastructure.Interfaces
         Genre GetById(int Id);
         Genre Create(Genre author);
         Genre Update(Genre author);
+        bool DeleteById(int id);
         public IEnumerable<Genre> GetMultipleByIds(IEnumerable<int> ids);
     }
 }

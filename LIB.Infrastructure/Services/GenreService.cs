@@ -47,6 +47,11 @@ namespace LIB.Infrastructure.Services
             return result;
         }
 
+        public bool DeleteById(int id)
+        {
+            return _genreRepository.DeleteById(id);
+        }
+
         public IEnumerable<Genre> GetMultipleByIds(IEnumerable<int> ids)
         {
             return _genreRepository.GetMultipleByIds(ids);
