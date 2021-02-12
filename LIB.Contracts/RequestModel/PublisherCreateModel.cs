@@ -11,6 +11,6 @@ namespace LIB.Contracts.RequestModel
         public string About { get; set; }
         public ICollection<int> Editors { get; set; }
         public ICollection<int> Books { get; set; }
-        public int ContactId { get; set; }
+        public ContactCreateModel Contact { get; set; }
     }
 }

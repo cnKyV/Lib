@@ -4,18 +4,19 @@ using LIB.Contracts.RequestModel;
 using LIB.Contracts.ResponseModel;
 using LIB.Core.Entities;
 using LIB.Domain.Interfaces;
+using LIB.Infrastructure.Interfaces;
 using LIB.Infrastructure.Services;
 
 namespace LIB.Domain.Requests
 {
     public class PublisherRequest : IPublisherRequest
     {
-        private readonly PublisherService _publisherService;
-        private readonly BookService _bookService;
-        private readonly EditorService _editorService;
+        private readonly IPublisherService _publisherService;
+        private readonly IBookService _bookService;
+        private readonly IEditorService _editorService;
         private readonly IMapper _mapper;
 
-        public PublisherRequest(PublisherService publisherService, BookService bookService, EditorService editorService, IMapper mapper)
+        public PublisherRequest(IPublisherService publisherService, IBookService bookService, IEditorService editorService, IMapper mapper)
         {
             _bookService = bookService;
             _editorService = editorService;

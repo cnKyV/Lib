@@ -1,4 +1,6 @@
-﻿using LIB.Domain.Requests;
+﻿using LIB.Contracts.RequestModel;
+using LIB.Domain.Interfaces;
+using LIB.Domain.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LIB.API.Controllers
@@ -7,9 +9,9 @@ namespace LIB.API.Controllers
     [ApiController]
     public class PublisherController : ControllerBase
     {
-        private readonly PublisherRequest _publisherRequest;
+        private readonly IPublisherRequest _publisherRequest;
 
-        public PublisherController(PublisherRequest publisherRequest)
+        public PublisherController(IPublisherRequest publisherRequest)
         {
             _publisherRequest = publisherRequest;
         }
@@ -30,6 +32,18 @@ namespace LIB.API.Controllers
         public IActionResult DeleteById(int id)
         {
             return Ok(_publisherRequest.DeleteById(id));
+        }
+
+        [HttpPost]
+        public IActionResult Create(PublisherCreateModel createModel)
+        {
+            return Ok(_publisherRequest.Create(createModel));
+        }
+
+        [HttpPut]
+        public IActionResult Update(PublisherUpdateModel updateModel)
+        {
+            return Ok(_publisherRequest.Update(updateModel));
         }
     }
 }

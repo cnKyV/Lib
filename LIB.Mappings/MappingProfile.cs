@@ -50,7 +50,15 @@ namespace LIB.Mapping
             CreateMap<GenreUpdateModel, Genre>()
                 .ForMember(i => i.Books, j => j.MapFrom(k => new List<BookGenre>()));
             CreateMap<Genre, GenreResponseModel>();
-            //Shared
+           //Publisher
+           CreateMap<PublisherCreateModel, Publisher>()
+               .ForMember(i => i.Books, k => k.MapFrom(j => new List<BookPublisher>()))          
+               .ForMember(i => i.Editors, k => k.MapFrom(j => new List<EditorPublisher>()));           
+           CreateMap<PublisherUpdateModel, Publisher>()
+               .ForMember(i => i.Books, k => k.MapFrom(j => new BookPublisher()))
+               .ForMember(i => i.Editors, k => k.MapFrom(j => new EditorPublisher()));    
+           CreateMap<Publisher, PublisherResponseModel>();
+           //Shared
             CreateMap<AuthorBook, AuthorBookResponseModel>()
                 .ForMember(model => model.AuthorId, entity => entity.MapFrom(i => i.Author.Id))
                 .ForMember(model => model.BookId, entity => entity.MapFrom(i => i.Book.Id));
