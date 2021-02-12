@@ -12,8 +12,9 @@ namespace LIB.Infrastructure.Interfaces
     {
         ICollection<Publisher> GetAll();
         Publisher GetById(int Id);
-        Publisher Create(Publisher author);
-        Publisher Update(Publisher author);
+        Publisher Create(Publisher publisher);
+        Publisher Update(Publisher publisher);
+        bool DeleteById(int id);
         public IEnumerable<Publisher> GetMultipleByIds(IEnumerable<int> ids);
 
     }

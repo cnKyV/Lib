@@ -6,6 +6,9 @@ using LIB.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using ILogger = Serilog.ILogger;
 
 namespace LIB.Infrastructure.Services
 {
@@ -13,28 +16,49 @@ namespace LIB.Infrastructure.Services
     {
        
         private readonly IPublisherRepository _publisherRepository;
-        public PublisherService(IPublisherRepository publisherRepository)
+        private readonly ILogger<Publisher> _logger;
+        public PublisherService(IPublisherRepository publisherRepository, ILogger<Publisher> logger)
         {
             _publisherRepository = publisherRepository;
+            _logger = logger;
         }
-        public Publisher Create(Publisher author)
+        public Publisher Create(Publisher publisher)
         {
-            throw new NotImplementedException();
+            if (publisher is null)
+            {
+                _logger.LogInformation($"Publisher with Id{publisher.Id} does not exist in the database.");
+                return null;
+            }
+            _publisherRepository.Create(publisher);
+            _publisherRepository.SaveChanges();
+            return publisher;
         }
 
         public ICollection<Publisher> GetAll()
         {
-            throw new NotImplementedException();
+            return _publisherRepository.GetAll();
         }
 
         public Publisher GetById(int Id)
         {
-            throw new NotImplementedException();
+            return _publisherRepository.GetById(Id);
         }
 
-        public Publisher Update(Publisher author)
+        public Publisher Update(Publisher publisher)
         {
-            throw new NotImplementedException();
+            if (publisher is null)
+            {
+                _logger.LogInformation($"Publisher with Id:{publisher.Id} does not exist in the database");
+                return null;
+            }
+            _publisherRepository.Update(publisher);
+            _publisherRepository.SaveChanges();
+            return publisher;
+        }
+
+        public bool DeleteById(int id)
+        {
+            return _publisherRepository.DeleteById(id);
         }
 
         public IEnumerable<Publisher> GetMultipleByIds(IEnumerable<int> ids)

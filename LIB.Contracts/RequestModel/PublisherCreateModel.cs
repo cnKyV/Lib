@@ -5,9 +5,8 @@ using System.Text;
 
 namespace LIB.Contracts.RequestModel
 {
-    public class PublisherUpdateRequestModel : IUpdateModel
+    public class PublisherCreateModel : ICreateModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string About { get; set; }
         public ICollection<int> Editors { get; set; }

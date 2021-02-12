@@ -53,13 +53,25 @@ namespace LIB.Infrastructure.Repositories
                 _logger.LogError(ex, ex.Message);
                 return false;
             }
-            _logger.LogInformation($"Publisher with {id} ID has been removed succesfully by {Environment.UserName} / {Environment.UserDomainName}");
             return true;
         }
 
         public IEnumerable<Publisher> GetMultipleByIds(IEnumerable<int> ids)
         {
             return  _libDbContext.Publishers.Where(i => ids.Contains(i.Id)).Select(i=>i).ToList();
+        }
+
+        public void SaveChanges()
+        {
+            try
+            {
+             _libDbContext.SaveChanges();
+            }
+            catch (Exception e)
+            { 
+                _logger.LogError(e, e.Message);
+            }
+           
         }
 
         public ICollection<Publisher> GetAll()
@@ -81,15 +93,6 @@ namespace LIB.Infrastructure.Repositories
             result.Contact = publisher.Contact;
             result.Books = publisher.Books;
             result.Editors = publisher.Editors;
-            try
-            {
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
             return result;
         }
     }
