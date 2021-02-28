@@ -11,7 +11,6 @@ namespace LIB.Infrastructure.Interfaces
         Editor GetById(int id);
         Editor Create(Editor TEntity);
         Editor Update(Editor TEntity);
-        bool Clear();
         bool DeleteById(int id);
         public IEnumerable<Editor> GetMultipleByIds(IEnumerable<int> ids);
         void SaveChanges();

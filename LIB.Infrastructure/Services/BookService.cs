@@ -77,11 +77,7 @@ namespace LIB.Infrastructure.Services
         {
             return _bookRepository.GetMultipleById(ids);
         }
-
-        public bool Clear()
-        {
-            return _bookRepository.Clear();
-        }
+        
 
         public bool DeleteById(int id)
         {

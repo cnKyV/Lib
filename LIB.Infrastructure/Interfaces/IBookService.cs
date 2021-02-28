@@ -16,7 +16,6 @@ namespace LIB.Infrastructure.Interfaces
         Book Create(Book author);
         Book Update(Book author);
         public IEnumerable<Book> GetMultipleByIds(IEnumerable<int> ids);
-        bool Clear();
-        bool DeleteById(int id);
+       public bool DeleteById(int id);
     }
 }

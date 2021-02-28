@@ -18,21 +18,7 @@ namespace LIB.Infrastructure.Repositories
             _libDbContext = libDbContext;
             _logger = logger;
         }
-        public bool Clear()
-        {
-            try
-            {
-                _libDbContext.Editors.RemoveRange(_libDbContext.Editors);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return false;
-            }
-            _logger.LogInformation($"Editors have been wiped out succesfully by {Environment.UserName} / {Environment.UserDomainName}");
-            return true;
-        }
-
+        
         public Editor Create(Editor editor)
         {
            _libDbContext.Editors.Add(editor);

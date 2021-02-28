@@ -11,7 +11,6 @@ namespace LIB.Infrastructure.Interfaces
         Genre GetById(int id);
         Genre Create(Genre TEntity);
         Genre Update(Genre TEntity);
-        bool Clear();
         bool DeleteById(int id);
         public IEnumerable<Genre> GetMultipleByIds(IEnumerable<int> ids);
         void SaveChanges();

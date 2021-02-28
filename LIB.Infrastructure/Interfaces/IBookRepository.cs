@@ -12,7 +12,6 @@ namespace LIB.Infrastructure.Interfaces
         Book GetById(int id);
         Book Create(Book book);
         Book Update(Book book);
-        bool Clear();
         bool DeleteById(int id);
         public IEnumerable<Book> GetMultipleById(IEnumerable<int> ids);
         public void SaveChanges();

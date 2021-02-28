@@ -17,21 +17,6 @@ namespace LIB.Infrastructure.Repositories
             _libDbContext = libDBContext;
             _logger = logger;
         }
-        public bool Clear()
-        {
-            try
-            {
-                _libDbContext.Contacts.RemoveRange(_libDbContext.Contacts);
-            }
-            catch (Exception ex)
-            {
-
-                _logger.LogError(ex, ex.Message);
-                return false;
-            }
-            _logger.LogInformation($"Contacts Succesfully Cleared by {Environment.UserDomainName} / {Environment.UserName}");
-            return true;
-        }
 
         public Contact Create(Contact contact)
         {
@@ -85,6 +70,7 @@ namespace LIB.Infrastructure.Repositories
             query.State = contact.State;
             query.ZipCode= contact.ZipCode;
             query.Website= contact.Website;
+            query.ZipCode = contact.ZipCode;
             try
             {
                 _libDbContext.SaveChanges();

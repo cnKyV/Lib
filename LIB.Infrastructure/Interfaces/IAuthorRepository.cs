@@ -12,7 +12,6 @@ namespace LIB.Infrastructure.Interfaces
         Author GetById(int id);
         Author Create(Author TEntity);
         Author Update(Author TEntity);
-        bool Clear();
         bool DeleteById(int id);
         public void SaveChanges();
         public IEnumerable<Author> GetMultipleById(IEnumerable<int> ids);

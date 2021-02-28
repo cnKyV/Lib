@@ -11,7 +11,6 @@ namespace LIB.Infrastructure.Interfaces
         Publisher GetById(int id);
         Publisher Create(Publisher TEntity);
         Publisher Update(Publisher TEntity);
-        bool Clear();
         bool DeleteById(int id);
         public IEnumerable<Publisher> GetMultipleByIds(IEnumerable<int> ids);
         void SaveChanges();

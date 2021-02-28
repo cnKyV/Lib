@@ -12,7 +12,6 @@ namespace LIB.Infrastructure.Interfaces
         Contact GetById(int id);
         Contact Create(Contact TEntity);
         Contact Update(Contact TEntity);
-        bool Clear();
         bool DeleteById(int id);
     }
 }

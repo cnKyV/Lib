@@ -17,23 +17,7 @@ namespace LIB.Infrastructure.Repositories
             _logger = logger;
             _libDbContext = libDbContext;
         }
-        public bool Clear()
-        {
-            try
-            {
-                _libDbContext.Genres.RemoveRange(_libDbContext.Genres);
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return false;
-
-            }
-            _logger.LogInformation($"Genres have been wiped out succesfully by {Environment.UserName} / {Environment.UserDomainName}");
-            return true;
-        }
-
+        
 
         public Genre Create(Genre genre)
         {

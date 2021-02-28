@@ -114,12 +114,6 @@ namespace LIB.Domain.Requests
             return _mapper.Map<BookResponseModel>(_bookService.GetById(id));
         }
         
-
-        public bool Clear()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public bool DeleteById(int id)
         {
             return _authorService.DeleteById(id);

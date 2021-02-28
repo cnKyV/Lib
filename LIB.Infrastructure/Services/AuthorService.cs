@@ -68,13 +68,6 @@ namespace LIB.Infrastructure.Services
             return result;
         }
 
-        public bool Clear()
-        {
-            bool result = _authorRepository.Clear();
-           SaveChanges();
-            return result;
-        }
-        
         public void SaveChanges()
         {
             _authorRepository.SaveChanges();

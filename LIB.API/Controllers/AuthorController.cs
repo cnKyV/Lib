@@ -44,11 +44,6 @@ namespace LIB.API.Controllers
         {
             return Ok(_authorRequest.UpdateRequest(author));
         }
-        [HttpDelete]
-        public IActionResult Clear()
-        {
-            return Ok(_authorRequest.Clear());
-        }
         [HttpDelete("{id}")]
         public IActionResult DeleteById(int id)
         {

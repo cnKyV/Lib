@@ -17,22 +17,6 @@ namespace LIB.Infrastructure.Repositories
             _logger = logger;
             _libDbContext = libDbContext;
         }
-        public bool Clear()
-        {
-            try
-            {
-                _libDbContext.Publishers.RemoveRange(_libDbContext.Publishers);
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return false;
-
-            }
-            _logger.LogInformation($"Publishers have been wiped out succesfully by {Environment.UserName} / {Environment.UserDomainName}");
-            return true;
-        }
 
         public Publisher Create(Publisher publisher)
         {

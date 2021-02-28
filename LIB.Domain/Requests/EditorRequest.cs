@@ -45,11 +45,6 @@ namespace LIB.Domain.Requests
             return _mapper.Map<EditorResponseModel>(_editorService.GetById(id));
         }
 
-        public bool Clear()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public bool DeleteById(int id)
         {
             return _editorService.DeleteById(id);

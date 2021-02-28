@@ -19,23 +19,7 @@ namespace LIB.Infrastructure.Repositories
             _logger = logger;
             _libDbContext = libDBContext;
         }
-        public bool Clear()
-        {     
-            try
-            {
-                _libDbContext.RemoveRange(_libDbContext.Books);
-                _libDbContext.SaveChanges();
-
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return false;
-            }
-            _logger.LogInformation($"Authors Succesfully Cleared by {Environment.UserDomainName} / {Environment.UserName}");
-            return true;
-        }
-
+        
         public Book Create(Book book)
         {
             try

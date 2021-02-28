@@ -79,11 +79,7 @@ namespace LIB.Domain.Requests
         {
             return _mapper.Map<AuthorResponseModel>(_authorService.GetById(id));
         }
-
-        public bool Clear()
-        {
-            return _authorService.Clear();
-        }
+        
 
         public bool DeleteById(int id)
         {

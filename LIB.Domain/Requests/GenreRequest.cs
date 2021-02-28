@@ -61,11 +61,6 @@ namespace LIB.Domain.Requests
             return _mapper.Map<IEnumerable<GenreResponseModel>>(_genreService.GetAll());
         }
 
-        public bool Clear()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public bool DeleteById(int id)
         {
             return _genreService.DeleteById(id);

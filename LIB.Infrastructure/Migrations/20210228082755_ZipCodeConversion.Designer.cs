@@ -4,14 +4,16 @@ using LIB.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LIB.Infrastructure.Migrations
 {
     [DbContext(typeof(LibDBContext))]
-    partial class LibDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210228082755_ZipCodeConversion")]
+    partial class ZipCodeConversion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

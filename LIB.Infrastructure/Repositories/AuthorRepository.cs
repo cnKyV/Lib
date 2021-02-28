@@ -21,20 +21,7 @@ namespace LIB.Infrastructure.Repositories
             _libDbContext = libDbContext;
             _logger = logger;
         }
-        public bool Clear()//bs
-        {
-            var query = _libDbContext.Authors;
-            try
-            {
-                _libDbContext.Authors.RemoveRange(query);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return false;
-            }
-            return true;
-        }
+
 
         public Author Create(Author author)
         {
