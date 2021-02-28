@@ -15,11 +15,9 @@ namespace LIB.Infrastructure.Repositories
     public class AuthorRepository : IAuthorRepository
     {
         private readonly LibDBContext _libDbContext;
-        private readonly ILogger<AuthorRepository> _logger;
-        public AuthorRepository(LibDBContext libDbContext, ILogger<AuthorRepository> logger)
+        public AuthorRepository(LibDBContext libDbContext)
         {
             _libDbContext = libDbContext;
-            _logger = logger;
         }
 
 
@@ -38,7 +36,6 @@ namespace LIB.Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, ex.Message);
                 return false;
             }
             return true;
@@ -61,15 +58,7 @@ namespace LIB.Infrastructure.Repositories
 
         public void SaveChanges()
         {
-            try
-            {
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-            }
-            
+            _libDbContext.SaveChanges();
         }
 
         public Author Update(Author author)

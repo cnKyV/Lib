@@ -12,11 +12,9 @@ namespace LIB.Infrastructure.Repositories
     public class EditorRepository : IEditorRepository
     {
         LibDBContext _libDbContext;
-        ILogger<Editor> _logger;
-        public EditorRepository(ILogger<Editor> logger, LibDBContext libDbContext)
+        public EditorRepository( LibDBContext libDbContext)
         {
             _libDbContext = libDbContext;
-            _logger = logger;
         }
         
         public Editor Create(Editor editor)
@@ -34,7 +32,6 @@ namespace LIB.Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, ex.Message);
                 return false;
             }
             return true;
@@ -47,15 +44,7 @@ namespace LIB.Infrastructure.Repositories
 
         public void SaveChanges()
         {
-            try
-            {
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                _logger.LogInformation(e,e.Message);
-            }
-            
+            _libDbContext.SaveChanges();
         }
 
         public ICollection<Editor> GetAll()

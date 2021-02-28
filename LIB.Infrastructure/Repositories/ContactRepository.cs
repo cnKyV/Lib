@@ -10,54 +10,12 @@ namespace LIB.Infrastructure.Repositories
 {
     public class ContactRepository : IContactRepository
     {
-        ILogger<Contact> _logger;
+
         LibDBContext _libDbContext;
-        public ContactRepository(ILogger<Contact> logger, LibDBContext libDBContext)
+        public ContactRepository(LibDBContext libDBContext)
         {
             _libDbContext = libDBContext;
-            _logger = logger;
         }
-
-        public Contact Create(Contact contact)
-        {
-            _libDbContext.Contacts.Add(contact);
-                return contact;
-        }
-
-        public bool DeleteById(int id)
-        {
-            var contact = _libDbContext.Contacts.FirstOrDefault(i => i.Id == id);
-            try
-            {
-                _libDbContext.Contacts.Remove(contact);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return false;
-            }
-            _logger.LogInformation($"Author with ID: {id} has been succesfully removed.");
-            return true;
-        }
-
-        public ICollection<Contact> GetAll()
-        {
-            return _libDbContext.Contacts.ToArray();
-        }
-
-        public Contact GetById(int id)
-        {
-            try
-            {
-                return _libDbContext.Contacts.FirstOrDefault(i => i.Id == id);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
-        }
-
         public Contact Update(Contact contact)
         {
             var query = _libDbContext.Contacts.FirstOrDefault(i => i.Id == contact.Id);
@@ -71,18 +29,7 @@ namespace LIB.Infrastructure.Repositories
             query.ZipCode= contact.ZipCode;
             query.Website= contact.Website;
             query.ZipCode = contact.ZipCode;
-            try
-            {
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
-            _logger.LogInformation($"Record with {query.Id} Id has been updated succesfully");
             return query;
-
         }
     }
 }

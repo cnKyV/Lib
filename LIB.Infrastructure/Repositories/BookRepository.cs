@@ -12,25 +12,15 @@ namespace LIB.Infrastructure.Repositories
 {
     public class BookRepository : IBookRepository
     {
-        private readonly ILogger<Book> _logger;
         private readonly LibDBContext _libDbContext;
-        public BookRepository(ILogger<Book> logger, LibDBContext libDBContext)
+        public BookRepository(LibDBContext libDBContext)
         {
-            _logger = logger;
             _libDbContext = libDBContext;
         }
         
         public Book Create(Book book)
         {
-            try
-            {
-                _libDbContext.Books.Add(book);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex,ex.Message);
-                return null;
-            }
+            _libDbContext.Books.Add(book);
             return book;
         }
 
@@ -45,7 +35,6 @@ namespace LIB.Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, ex.Message);
                 return false;
             }
             return true;
@@ -59,44 +48,23 @@ namespace LIB.Infrastructure.Repositories
 
         public void SaveChanges()
         {
-            try
-            {
-                _libDbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogInformation(ex, ex.Message);
-            }
+            _libDbContext.SaveChanges();
         }
 
         public ICollection<Book> GetAll()
         {
             var query = _libDbContext.Books.Include(i=>i.Authors).Include(i=>i.Editors).
                 Include(i=>i.Genres).Include(i=>i.Publishers).ToArray();
-            try
-            {
-                return query;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
+            return query;
+
         }
 
         public Book GetById(int id)
         {
             var book = _libDbContext.Books.Include(i=>i.Authors).Include(i=>i.Editors).
                 Include(i=>i.Genres).Include(i=>i.Publishers).FirstOrDefault(i => i.Id == id);
-            try
-            {
+
                 return book;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return null;
-            }
         }
 
         public Book Update(Book book)

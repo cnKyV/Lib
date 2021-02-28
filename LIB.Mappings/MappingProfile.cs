@@ -19,8 +19,12 @@ namespace LIB.Mapping
                 .ForMember(entity => entity.Books, model => model.MapFrom(i => new List<AuthorBook>())); 
             CreateMap<AuthorUpdateModel, Author>()
                 .ForMember(entity => entity.Books, model => model.MapFrom(i => new List<AuthorBook>()));
+            
+            
+            //Contact
             CreateMap<ContactCreateModel, Contact>();
             CreateMap<ContactUpdateModel, Contact>();
+            CreateMap<Contact, ContactResponseModel>();
             
             //Book
             CreateMap<BookCreateModel, Book>()

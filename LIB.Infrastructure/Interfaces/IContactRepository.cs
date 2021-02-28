@@ -8,10 +8,6 @@ namespace LIB.Infrastructure.Interfaces
 {
     public interface IContactRepository
     {
-        ICollection<Contact> GetAll();
-        Contact GetById(int id);
-        Contact Create(Contact TEntity);
         Contact Update(Contact TEntity);
-        bool DeleteById(int id);
     }
 }

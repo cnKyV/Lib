@@ -6,29 +6,29 @@ using LIB.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Extensions.Logging;
+
 
 namespace LIB.Infrastructure.Services
 {
     public class ContactService : IContactService
     {
-        public Contact Create(Contact author)
+        private readonly IContactRepository _contactRepository;
+        private readonly ILogger<IContactService> _logger;
+        public ContactService(IContactRepository contactRepository, ILogger<IContactService> logger)
         {
-            throw new NotImplementedException();
+            _contactRepository = contactRepository;
+            _logger = logger;
         }
-
-        public ICollection<Contact> GetAll()
+        public Contact Update(Contact contact)
         {
-            throw new NotImplementedException();
-        }
-
-        public Contact GetById(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Contact Update(Contact author)
-        {
-            throw new NotImplementedException();
+            var scontact = _contactRepository.Update(contact);
+            if (scontact is null)
+            {
+                _logger.LogError($"Contact with ID: {scontact.Id} is null.");
+                return null;
+            }
+            return scontact;
         }
     }
 }

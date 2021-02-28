@@ -10,11 +10,9 @@ namespace LIB.Infrastructure.Repositories
 {
     public class GenreRepository : IGenreRepository
     {
-        ILogger<Genre> _logger;
         LibDBContext _libDbContext;
-        public GenreRepository(ILogger<Genre> logger, LibDBContext libDbContext)
+        public GenreRepository(LibDBContext libDbContext)
         {
-            _logger = logger;
             _libDbContext = libDbContext;
         }
         
@@ -34,7 +32,6 @@ namespace LIB.Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, ex.Message);
                 return false;
             }
             return true;

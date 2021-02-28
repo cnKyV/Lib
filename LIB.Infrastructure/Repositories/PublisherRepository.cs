@@ -10,11 +10,9 @@ namespace LIB.Infrastructure.Repositories
 {
     public class PublisherRepository : IPublisherRepository
     {
-        ILogger<Publisher> _logger;
         LibDBContext _libDbContext;
-        public PublisherRepository(ILogger<Publisher> logger, LibDBContext libDbContext)
+        public PublisherRepository(LibDBContext libDbContext)
         {
-            _logger = logger;
             _libDbContext = libDbContext;
         }
 
@@ -34,7 +32,6 @@ namespace LIB.Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, ex.Message);
                 return false;
             }
             return true;
@@ -47,14 +44,8 @@ namespace LIB.Infrastructure.Repositories
 
         public void SaveChanges()
         {
-            try
-            {
-             _libDbContext.SaveChanges();
-            }
-            catch (Exception e)
-            { 
-                _logger.LogError(e, e.Message);
-            }
+            _libDbContext.SaveChanges();
+
            
         }
 
