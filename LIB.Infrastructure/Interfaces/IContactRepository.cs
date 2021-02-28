@@ -9,5 +9,6 @@ namespace LIB.Infrastructure.Interfaces
     public interface IContactRepository
     {
         Contact Update(Contact TEntity);
+        void SaveChanges();
     }
 }

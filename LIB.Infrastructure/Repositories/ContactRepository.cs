@@ -31,5 +31,10 @@ namespace LIB.Infrastructure.Repositories
             query.ZipCode = contact.ZipCode;
             return query;
         }
+
+        public void SaveChanges()
+        {
+            _libDbContext.SaveChanges();
+        }
     }
 }

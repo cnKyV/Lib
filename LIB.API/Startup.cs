@@ -45,6 +45,7 @@ namespace LIB.Core
             services.AddScoped<IEditorRequest, EditorRequest>();
             services.AddScoped<IGenreRequest, GenreRequest>();
             services.AddScoped<IPublisherRequest, PublisherRequest>();
+            services.AddScoped<IContactRequest, ContactRequest>();
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddControllers();
 

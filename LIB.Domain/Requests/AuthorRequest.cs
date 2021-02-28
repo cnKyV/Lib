@@ -38,18 +38,8 @@ namespace LIB.Domain.Requests
                 moq.Book = ids;
                 query.Books.Add(moq);
             }
-            // foreach (var authorbook in author.Books)
-            // {
-            //     var moq = new AuthorBook();
-            //     moq.Book = _bookService.GetById(authorbook);
-            //     query.Books.Add(moq);
-            // }
             _authorService.Create(query);
             var response = _mapper.Map<AuthorResponseModel>(query);
-            // foreach (var books in query.Books)
-            // {
-            //     response.Books.Add(books.Book.Id);
-            // }
             return response;
         }
         
@@ -64,14 +54,8 @@ namespace LIB.Domain.Requests
                 moq.Book = ids;
                 query.Books.Add(moq);
             }
-            // var dbAuthor = _authorService.GetById(author.Id);
-            // dbAuthor.Name = query.Name;
-            // dbAuthor.Surname = query.Surname;
-            // dbAuthor.About = query.About;
-            // dbAuthor.DateOfBirth = query.DateOfBirth;
-            // dbAuthor.Books = query.Books;
-            _authorService.Update(query);
-            var model = _mapper.Map<AuthorResponseModel>(query);
+           var tbrAuthor = _authorService.Update(query);
+            var model = _mapper.Map<AuthorResponseModel>(tbrAuthor);
             return model;
         }
         

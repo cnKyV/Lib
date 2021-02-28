@@ -63,12 +63,13 @@ namespace LIB.Infrastructure.Repositories
 
         public Author Update(Author author)
         {
-            var _author = _libDbContext.Authors.Include(i=>i.Books).ThenInclude(i=>i.Book).FirstOrDefault(i => i.Id == author.Id);
+            var _author = _libDbContext.Authors.Include(i=>i.Books).ThenInclude(i=>i.Book).Include(i=>i.Contact).FirstOrDefault(i => i.Id == author.Id);
                 _author.Name = author.Name;
                 _author.Surname = author.Surname;
                 _author.About = author.About;
                 _author.DateOfBirth = author.DateOfBirth;
                 _author.Books = author.Books;
+                
                 return _author;
         }
         

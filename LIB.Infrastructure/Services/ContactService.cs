@@ -28,6 +28,7 @@ namespace LIB.Infrastructure.Services
                 _logger.LogError($"Contact with ID: {scontact.Id} is null.");
                 return null;
             }
+            _contactRepository.SaveChanges();
             return scontact;
         }
     }
