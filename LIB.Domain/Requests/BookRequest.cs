@@ -33,78 +33,15 @@ namespace LIB.Domain.Requests
         public BookResponseModel CreateRequest(BookCreateModel book)
         {
             var result = _mapper.Map<Book>(book);
-            var qAuthors = _authorService.GetMultipleByIds(book.Authors);
-            var qEditors = _editorService.GetMultipleByIds(book.Editors);
-            var qGenres= _genreService.GetMultipleByIds(book.Genres);
-            var qPublishers= _publisherService.GetMultipleByIds(book.Publishers);
-
-            foreach (var author in qAuthors)
-            {
-                AuthorBook authorBook = new AuthorBook();
-                authorBook.Author = author;
-                result.Authors.Add(authorBook);
-            }
-            foreach (var editor in qEditors)
-            {
-                BookEditor bookEditor = new BookEditor();
-                bookEditor.Editor = editor;
-                result.Editors.Add(bookEditor);
-            }
-
-            foreach (var genre in qGenres)
-            {
-                BookGenre bookGenre = new BookGenre();
-                bookGenre.Genre = genre;
-                result.Genres.Add(bookGenre);
-            }
-
-            foreach (var publisher in qPublishers)
-            {
-                BookPublisher bookPublisher = new BookPublisher();
-                bookPublisher.Publisher = publisher;
-                result.Publishers.Add(bookPublisher);
-            }
-
+            Populate(book,result);
             _bookService.Create(result);
-            
-            
-           return _mapper.Map<BookResponseModel>(result);
+            return _mapper.Map<BookResponseModel>(result);
         }
 
         public BookResponseModel UpdateRequest(BookUpdateModel book)
         {
             var result = _mapper.Map<Book>(book);
-            var qAuthors = _authorService.GetMultipleByIds(book.Authors);
-            var qEditors = _editorService.GetMultipleByIds(book.Editors);
-            var qGenres= _genreService.GetMultipleByIds(book.Genres);
-            var qPublishers= _publisherService.GetMultipleByIds(book.Publishers);
-
-            foreach (var author in qAuthors)
-            {
-                AuthorBook authorBook = new AuthorBook();
-                authorBook.Author = author;
-                result.Authors.Add(authorBook);
-            }
-            foreach (var editor in qEditors)
-            {
-                BookEditor bookEditor = new BookEditor();
-                bookEditor.Editor = editor;
-                result.Editors.Add(bookEditor);
-            }
-
-            foreach (var genre in qGenres)
-            {
-                BookGenre bookGenre = new BookGenre();
-                bookGenre.Genre = genre;
-                result.Genres.Add(bookGenre);
-            }
-
-            foreach (var publisher in qPublishers)
-            {
-                BookPublisher bookPublisher = new BookPublisher();
-                bookPublisher.Publisher = publisher;
-                result.Publishers.Add(bookPublisher);
-            }
+           Populate(book,result);
             _bookService.Update(result);
             return _mapper.Map<BookResponseModel>(result);
         }
@@ -116,7 +53,7 @@ namespace LIB.Domain.Requests
         
         public bool DeleteById(int id)
         {
-            return _authorService.DeleteById(id);
+            return _bookService.DeleteById(id);
         }
 
         public IEnumerable<BookResponseModel> BookViewMultiple()
@@ -124,6 +61,74 @@ namespace LIB.Domain.Requests
             return _mapper.Map<IEnumerable<BookResponseModel>>(_bookService.GetAll());
             //_mapper.Map<>()
         }
-        
+
+        void Populate(BookCreateModel book, Book result)
+        {
+            var qAuthors = _authorService.GetMultipleByIds(book.Authors);
+            var qEditors = _editorService.GetMultipleByIds(book.Editors);
+            var qGenres= _genreService.GetMultipleByIds(book.Genres);
+            var qPublishers= _publisherService.GetMultipleByIds(book.Publishers);
+
+            foreach (var author in qAuthors)
+            {
+                AuthorBook authorBook = new AuthorBook();
+                authorBook.Author = author;
+                result.Authors.Add(authorBook);
+            }
+            foreach (var editor in qEditors)
+            {
+                BookEditor bookEditor = new BookEditor();
+                bookEditor.Editor = editor;
+                result.Editors.Add(bookEditor);
+            }
+
+            foreach (var genre in qGenres)
+            {
+                BookGenre bookGenre = new BookGenre();
+                bookGenre.Genre = genre;
+                result.Genres.Add(bookGenre);
+            }
+
+            foreach (var publisher in qPublishers)
+            {
+                BookPublisher bookPublisher = new BookPublisher();
+                bookPublisher.Publisher = publisher;
+                result.Publishers.Add(bookPublisher);
+            }
+        }
+        void Populate(BookUpdateModel book, Book result)
+        {
+            var qAuthors = _authorService.GetMultipleByIds(book.Authors);
+            var qEditors = _editorService.GetMultipleByIds(book.Editors);
+            var qGenres= _genreService.GetMultipleByIds(book.Genres);
+            var qPublishers= _publisherService.GetMultipleByIds(book.Publishers);
+
+            foreach (var author in qAuthors)
+            {
+                AuthorBook authorBook = new AuthorBook();
+                authorBook.Author = author;
+                result.Authors.Add(authorBook);
+            }
+            foreach (var editor in qEditors)
+            {
+                BookEditor bookEditor = new BookEditor();
+                bookEditor.Editor = editor;
+                result.Editors.Add(bookEditor);
+            }
+
+            foreach (var genre in qGenres)
+            {
+                BookGenre bookGenre = new BookGenre();
+                bookGenre.Genre = genre;
+                result.Genres.Add(bookGenre);
+            }
+
+            foreach (var publisher in qPublishers)
+            {
+                BookPublisher bookPublisher = new BookPublisher();
+                bookPublisher.Publisher = publisher;
+                result.Publishers.Add(bookPublisher);
+            }
+        }
     }
 }

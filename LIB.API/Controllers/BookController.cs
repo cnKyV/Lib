@@ -40,11 +40,7 @@ namespace LIB.API.Controllers
         {
             return Ok(_bookRequest.UpdateRequest(book));
         }
-        [HttpDelete]
-        public IActionResult Clear()
-        {
-            return Ok();
-        }
+        
         [HttpDelete("{id}")]
         public IActionResult DeleteById(int id)
         {

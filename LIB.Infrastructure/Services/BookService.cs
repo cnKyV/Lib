@@ -81,7 +81,9 @@ namespace LIB.Infrastructure.Services
 
         public bool DeleteById(int id)
         {
-            return _bookRepository.DeleteById(id);
+            bool result = _bookRepository.DeleteById(id);
+            _bookRepository.SaveChanges();
+            return result;
         }
     }
 }
